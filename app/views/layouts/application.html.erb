@@ -37,7 +37,15 @@
 <!-- Start of Side-bar -->
         <div class="col-sm-3 col-md-2 sidebar">
           <form id="search-bar">
-            	<input type="text" class="form-control" placeholder="Search...">
+            <div class="input-group">
+            	<input type="text" class="form-control" placeholder="Search..." aria-describedby="basic-addon1">
+              <span class="input-group-btn" id="basic-addon1">
+                <button class="btn btn-default" type="button">
+                  <span class="glyphicon glyphicon-search">
+                  </span>
+                </button>
+              </span>
+              </div>
           </form>
           <ul class="nav nav-sidebar">
             <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
