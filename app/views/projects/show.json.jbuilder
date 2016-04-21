@@ -1,0 +1,1 @@
+json.extract! @project, :id, :project_title, :project_acronym, :project_director, :funding_agency, :start_date, :end_date, :total_budget, :total_amount_spent, :account_number, :created_at, :updated_at

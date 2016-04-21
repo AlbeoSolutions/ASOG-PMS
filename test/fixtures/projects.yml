@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  project_title: MyString
+  project_acronym: MyString
+  project_director: MyString
+  funding_agency: MyString
+  start_date: 2016-04-21
+  end_date: 2016-04-21
+  total_budget: 9.99
+  total_amount_spent: 9.99
+  account_number: MyString
+
+two:
+  project_title: MyString
+  project_acronym: MyString
+  project_director: MyString
+  funding_agency: MyString
+  start_date: 2016-04-21
+  end_date: 2016-04-21
+  total_budget: 9.99
+  total_amount_spent: 9.99
+  account_number: MyString

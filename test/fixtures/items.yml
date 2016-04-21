@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  item_title: MyString
+  budget: 9.99
+  amount_spent: 9.99
+  balance_left: 9.99
+  percentage_spent: 9.99
+  comments: MyText
+
+two:
+  item_title: MyString
+  budget: 9.99
+  amount_spent: 9.99
+  balance_left: 9.99
+  percentage_spent: 9.99
+  comments: MyText

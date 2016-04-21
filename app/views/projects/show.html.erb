@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Project title:</strong>
+  <%= @project.project_title %>
+</p>
+
+<p>
+  <strong>Project acronym:</strong>
+  <%= @project.project_acronym %>
+</p>
+
+<p>
+  <strong>Project director:</strong>
+  <%= @project.project_director %>
+</p>
+
+<p>
+  <strong>Funding agency:</strong>
+  <%= @project.funding_agency %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @project.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @project.end_date %>
+</p>
+
+<p>
+  <strong>Total budget:</strong>
+  <%= @project.total_budget %>
+</p>
+
+<p>
+  <strong>Total amount spent:</strong>
+  <%= @project.total_amount_spent %>
+</p>
+
+<p>
+  <strong>Account number:</strong>
+  <%= @project.account_number %>
+</p>
+
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>

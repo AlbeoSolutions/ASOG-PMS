@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Item title:</strong>
+  <%= @item.item_title %>
+</p>
+
+<p>
+  <strong>Budget:</strong>
+  <%= @item.budget %>
+</p>
+
+<p>
+  <strong>Amount spent:</strong>
+  <%= @item.amount_spent %>
+</p>
+
+<p>
+  <strong>Balance left:</strong>
+  <%= @item.balance_left %>
+</p>
+
+<p>
+  <strong>Percentage spent:</strong>
+  <%= @item.percentage_spent %>
+</p>
+
+<p>
+  <strong>Comments:</strong>
+  <%= @item.comments %>
+</p>
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>

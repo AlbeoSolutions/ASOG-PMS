@@ -1,0 +1,16 @@
+<%= simple_form_for(@item) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :item_title %>
+    <%= f.input :budget %>
+    <%= f.input :amount_spent %>
+    <%= f.input :balance_left %>
+    <%= f.input :percentage_spent %>
+    <%= f.input :comments %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  task_title: MyString
+  description: MyText
+  due_date: 2016-04-21
+  date_accomplished: 2016-04-21
+
+two:
+  task_title: MyString
+  description: MyText
+  due_date: 2016-04-21
+  date_accomplished: 2016-04-21
