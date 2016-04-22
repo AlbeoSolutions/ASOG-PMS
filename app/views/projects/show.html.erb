@@ -1,5 +1,10 @@
 <p id="notice"><%= notice %></p>
 
+<% @project.staffs.each do |staff| %>
+  <%= staff.first_name %>
+<% end %>
+
+
 <p>
   <strong>Project title:</strong>
   <%= @project.project_title %>
