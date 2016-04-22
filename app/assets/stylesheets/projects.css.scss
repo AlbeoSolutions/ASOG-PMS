@@ -1,0 +1,23 @@
+// Place all the styles related to the Projects controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+// SHOW PROJECT STYLING 
+
+.project-profile-table {
+
+  // width: 70% !important;
+
+  .table-heading {
+    background-color: #1C3F94;
+    color: #eee;
+    font-weight: bold;
+  }
+
+  td {
+    width: 70%;
+    text-align: center;
+  }
+
+}

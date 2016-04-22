@@ -1,19 +1,37 @@
 <p id="notice"><%= notice %></p>
 
-<% @project.staffs.each do |staff| %>
-  <%= staff.first_name %>
-<% end %>
+<h1 class="hey">Project Profile</h1>
 
 
-<p>
-  <strong>Project title:</strong>
-  <%= @project.project_title %>
-</p>
+<h2> <%= @project.project_title %> </h2>
 
-<p>
+<!-- <p>
   <strong>Project acronym:</strong>
   <%= @project.project_acronym %>
-</p>
+</p> -->
+
+<table class="table table-bordered project-profile-table">
+  <tr>
+    <th class="table-heading"> KPA Cluster </th>
+    <td > HEHEHEH </td>
+  </tr>
+
+  <tr>
+    <th class="table-heading"> Start Date </th>
+    <td> <%= @project.start_date %> </td>
+  </tr>
+
+  <tr>
+    <th class="table-heading"> End Date </th>
+    <td> <%= @project.end_date %> </td>
+  </tr>
+
+  <tr>
+    <th class="table-heading"> Project Director </th>
+    <td> <%= @project.project_director %> </td>
+  </tr>
+</table>
+
 
 <p>
   <strong>Project director:</strong>
@@ -49,6 +67,10 @@
   <strong>Account number:</strong>
   <%= @project.account_number %>
 </p>
+
+<% @project.staffs.each do |staff| %>
+  <%= staff.first_name %>
+<% end %>
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
