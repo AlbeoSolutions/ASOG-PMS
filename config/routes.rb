@@ -1,10 +1,22 @@
 Rails.application.routes.draw do
+
+  devise_for :staffs, :controllers => { registrations: 'registrations' }
+
   resources :tasks
   resources :items
   resources :projects
   get 'pages/index'
 
-  root 'pages#index'
+  devise_scope :staff do
+    authenticated  do
+      root to: 'pages#index'
+    end
+
+    unauthenticated do
+      root to: 'devise/sessions#new', as: 'unauthenticated_root'
+    end
+
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

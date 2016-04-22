@@ -1,0 +1,30 @@
+<!-- Start of Nav-bar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><%= image_tag("ASOG-PMS logo 1.png", :alt => "logo", :class => "logo") %></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Notifications</a></li>
+            <li id="user-icon">
+              <div class="dropdown" id="user-menu">
+                <div class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  <%= image_tag("user icon.png", :alt => "user-icon", :class => "user-icon") %>
+                </div>
+                <ul class="dropdown-menu bullet pull-right" aria-labelledby="dropdownMenu1">
+                  <li> <a href="#">Something</a></li>
+                </ul>
+              </div></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+<!-- End of Nav-bar -->

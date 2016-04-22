@@ -11,9 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160421102933) do
+ActiveRecord::Schema.define(version: 20160421122448) do
 
   create_table "items", force: :cascade do |t|
+    t.integer  "project_id",       limit: 4
     t.string   "item_title",       limit: 255
     t.decimal  "budget",                         precision: 10
     t.decimal  "amount_spent",                   precision: 10
@@ -23,6 +24,8 @@ ActiveRecord::Schema.define(version: 20160421102933) do
     t.datetime "created_at",                                    null: false
     t.datetime "updated_at",                                    null: false
   end
+
+  add_index "items", ["project_id"], name: "index_items_on_project_id", using: :btree
 
   create_table "projects", force: :cascade do |t|
     t.string   "project_title",      limit: 255
@@ -38,7 +41,29 @@ ActiveRecord::Schema.define(version: 20160421102933) do
     t.datetime "updated_at",                                    null: false
   end
 
+  create_table "staffs", force: :cascade do |t|
+    t.string   "first_name",               limit: 255
+    t.string   "last_name",                limit: 255
+    t.date     "contract_expiration_date"
+    t.string   "email",                    limit: 255, default: "", null: false
+    t.string   "encrypted_password",       limit: 255, default: "", null: false
+    t.string   "reset_password_token",     limit: 255
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",            limit: 4,   default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip",       limit: 255
+    t.string   "last_sign_in_ip",          limit: 255
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
+  end
+
+  add_index "staffs", ["email"], name: "index_staffs_on_email", unique: true, using: :btree
+  add_index "staffs", ["reset_password_token"], name: "index_staffs_on_reset_password_token", unique: true, using: :btree
+
   create_table "tasks", force: :cascade do |t|
+    t.integer  "project_id",        limit: 4
     t.string   "task_title",        limit: 255
     t.text     "description",       limit: 65535
     t.date     "due_date"
@@ -46,5 +71,7 @@ ActiveRecord::Schema.define(version: 20160421102933) do
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
   end
+
+  add_index "tasks", ["project_id"], name: "index_tasks_on_project_id", using: :btree
 
 end
