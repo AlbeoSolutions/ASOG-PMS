@@ -2,9 +2,14 @@ Rails.application.routes.draw do
 
   devise_for :staffs, :controllers => { registrations: 'registrations' }
 
-  resources :tasks
-  resources :items
+
   resources :projects
+
+  resources :projects do 
+    resources :tasks
+    resources :items
+  end
+
   get 'pages/index'
 
   devise_scope :staff do

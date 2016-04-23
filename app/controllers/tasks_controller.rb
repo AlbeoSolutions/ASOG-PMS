@@ -10,11 +10,16 @@ class TasksController < ApplicationController
   # GET /tasks/1
   # GET /tasks/1.json
   def show
+    @project = Project.find(params[:project_id])
   end
 
   # GET /tasks/new
   def new
-    @task = Task.new
+    
+    @project = Project.find(params[:project_id])
+    @task = @project.tasks.build
+    
+    
   end
 
   # GET /tasks/1/edit
@@ -25,10 +30,10 @@ class TasksController < ApplicationController
   # POST /tasks.json
   def create
     @task = Task.new(task_params)
-
+    
     respond_to do |format|
       if @task.save
-        format.html { redirect_to @task, notice: 'Task was successfully created.' }
+        format.html { redirect_to project_task_path(:id => @task.id, :project_id => params[:project_id]), notice: 'Task was successfully created.' }
         format.json { render :show, status: :created, location: @task }
       else
         format.html { render :new }
@@ -69,6 +74,10 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:task_title, :description, :due_date, :date_accomplished)
+      params.require(:task).permit!
+    end
+
+    def project_params
+      params.require(:project).permit!
     end
 end

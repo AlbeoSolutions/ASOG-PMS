@@ -8,8 +8,8 @@
 
 #KPACluster Seeds
 
-# KpaCluster.create(kpa_title: 'Leadership and Governance')
-# KpaCluster.create(kpa_title: 'Poverty')
-# KpaCluster.create(kpa_title: 'Social Accountability')
-# KpaCluster.create(kpa_title: 'Politics')
-# KpaCluster.create(kpa_title: 'Climate Change and Environment')
+KpaCluster.create(kpa_title: 'Leadership and Governance')
+KpaCluster.create(kpa_title: 'Poverty')
+KpaCluster.create(kpa_title: 'Social Accountability')
+KpaCluster.create(kpa_title: 'Politics')
+KpaCluster.create(kpa_title: 'Climate Change and Environment')
