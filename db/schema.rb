@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160422091040) do
+ActiveRecord::Schema.define(version: 20160423020436) do
 
   create_table "items", force: :cascade do |t|
     t.integer  "project_id",       limit: 4
@@ -34,6 +34,12 @@ ActiveRecord::Schema.define(version: 20160422091040) do
     t.integer  "staff_id",   limit: 4
   end
 
+  create_table "kpa_clusters", force: :cascade do |t|
+    t.string   "kpa_title",  limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string   "project_title",      limit: 255
     t.string   "project_acronym",    limit: 255
@@ -46,7 +52,10 @@ ActiveRecord::Schema.define(version: 20160422091040) do
     t.string   "account_number",     limit: 255
     t.datetime "created_at",                                    null: false
     t.datetime "updated_at",                                    null: false
+    t.integer  "kpa_cluster_id",     limit: 4
   end
+
+  add_index "projects", ["kpa_cluster_id"], name: "index_projects_on_kpa_cluster_id", using: :btree
 
   create_table "staffs", force: :cascade do |t|
     t.string   "first_name",               limit: 255
@@ -81,4 +90,5 @@ ActiveRecord::Schema.define(version: 20160422091040) do
 
   add_index "tasks", ["project_id"], name: "index_tasks_on_project_id", using: :btree
 
+  add_foreign_key "projects", "kpa_clusters"
 end

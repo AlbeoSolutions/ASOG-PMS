@@ -11,6 +11,7 @@
     <%= f.input :total_budget %>
     <%= f.input :total_amount_spent %>
     <%= f.input :account_number %>
+    <%= f.association :kpa_cluster, include_blank: false, label_method: :kpa_title  %>
   </div>
 
   <div class="form-actions">
