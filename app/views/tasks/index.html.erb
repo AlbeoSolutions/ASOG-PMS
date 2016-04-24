@@ -14,16 +14,19 @@
   </thead>
 
   <tbody>
-    <% @tasks.each do |task| %>
-      <tr>
-        <td><%= task.task_title %></td>
-        <td><%= task.description %></td>
-        <td><%= task.due_date %></td>
-        <td><%= task.date_accomplished %></td>
-        <td><%= link_to 'Show', project_task_path(:id => task.id, :project_id => params[:project_id]) %></td>
-        <td><%= link_to 'Edit', edit_project_task_path(:id => task.id, :project_id => params[:project_id]) %></td>
-        <td><%= link_to 'Destroy', project_task_path(:id => task.id, :project_id => params[:project_id]), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+
+    <% @project.tasks.each do |task| %>
+
+        <tr>
+          <td><%= task.task_title %></td>
+          <td><%= task.description %></td>
+          <td><%= task.due_date %></td>
+          <td><%= task.date_accomplished %></td>
+          <td><%= link_to 'Show', project_task_path(:id => task.id, :project_id => params[:project_id]) %></td>
+          <td><%= link_to 'Edit', edit_project_task_path(:id => task.id, :project_id => params[:project_id]) %></td>
+          <td><%= link_to 'Destroy', project_task_path(:id => task.id, :project_id => params[:project_id]), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      
     <% end %>
   </tbody>
 </table>
