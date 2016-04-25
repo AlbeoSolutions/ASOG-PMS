@@ -1,36 +1,34 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Tasks</h1>
+<div class="index-tasks">
+  <h1>Project Work Plan</h1>
+  <h2><%= @project.project_title%></h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Task title</th>
+        <th>Description</th>
+        <th>Due date</th>
+        <th>Date accomplished</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Task title</th>
-      <th>Description</th>
-      <th>Due date</th>
-      <th>Date accomplished</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <tbody>
+      <% @project.tasks.each do |task| %>
+          <tr>
+            <td><%= task.task_title %></td>
+            <td><%= task.description %></td>
+            <td><%= task.due_date %></td>
+            <td><%= task.date_accomplished %></td>
+            <td><%= link_to 'Show', project_task_path(:id => task.id, :project_id => params[:project_id]) %></td>
+            <td><%= link_to 'Edit', edit_project_task_path(:id => task.id, :project_id => params[:project_id]) %></td>
+            <td><%= link_to 'Destroy', project_task_path(:id => task.id, :project_id => params[:project_id]), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
 
-  <tbody>
-
-    <% @project.tasks.each do |task| %>
-
-        <tr>
-          <td><%= task.task_title %></td>
-          <td><%= task.description %></td>
-          <td><%= task.due_date %></td>
-          <td><%= task.date_accomplished %></td>
-          <td><%= link_to 'Show', project_task_path(:id => task.id, :project_id => params[:project_id]) %></td>
-          <td><%= link_to 'Edit', edit_project_task_path(:id => task.id, :project_id => params[:project_id]) %></td>
-          <td><%= link_to 'Destroy', project_task_path(:id => task.id, :project_id => params[:project_id]), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Task', new_project_task_path(:project_id => params[:project_id]) %>
+  <%= link_to 'New Task', new_project_task_path(:project_id => params[:project_id]) %>
+</div>

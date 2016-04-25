@@ -3,7 +3,37 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-// SHOW PROJECT STYLING 
+// NEW PROJECT STYLING
+.new-project-form {
+
+  .project_start_date,
+  .project_end_date {
+    display: inline-block;
+    margin-right: 50px;
+  }
+
+  .project_project_title,
+  .project_project_acronym,
+  .project_kpa_cluster,
+  .project_project_director,
+  .project_account_number,
+  .project_funding_agency,
+  .project_total_amount_spent,
+  .project_total_budget  {
+    display: inline-block;
+    width: 43%;
+    margin-right: 50px;
+  }
+
+  .btn {
+  	color: white !important;
+  }
+  
+}
+
+
+
+// SHOW PROJECT STYLING
 
 .project-profile-table {
 
