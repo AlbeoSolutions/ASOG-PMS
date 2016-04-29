@@ -1,0 +1,29 @@
+// Place all the styles related to the Tasks controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// NEW TASK STYLING
+
+.new-task-form {
+
+  .task_due_date,
+  .task_date_accomplished {
+    display: inline-block;
+    margin-right: 50px;
+  }
+
+  .btn {
+    color: white;
+  }
+
+}
+
+
+// INDEX TASK STYLING
+
+.index-tasks {
+  thead {
+    background: #1C3F94;
+    color: white;
+  }
+}

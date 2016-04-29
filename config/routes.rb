@@ -5,10 +5,11 @@ Rails.application.routes.draw do
 
   resources :projects
 
-  resources :projects do 
+  resources :projects do
     resources :tasks
     resources :items
   end
+
 
   get 'pages/index'
 

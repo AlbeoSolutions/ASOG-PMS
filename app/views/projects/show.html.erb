@@ -74,4 +74,4 @@
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back to Home', projects_path %>
-<%= link_to 'Edit Work Plan',  new_project_task_path(@project)%>
+<%= link_to 'Edit Work Plan',  new_project_task_path(:project_id => @project.id)%>
