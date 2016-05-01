@@ -20,7 +20,7 @@
                   <%= image_tag("user icon.png", :alt => "user-icon", :class => "user-icon") %>
                 </div>
                 <ul class="dropdown-menu bullet pull-right" aria-labelledby="dropdownMenu1">
-                  <li> <a href="#">Something</a></li>
+                  <li> <%= link_to "Log Out", destroy_user_session_path, method: :delete, :class => "navbar-link" %></li>
                 </ul>
               </div></li>
           </ul>
