@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160501100332) do
+ActiveRecord::Schema.define(version: 20160503071036) do
 
   create_table "items", force: :cascade do |t|
     t.integer  "project_id",       limit: 4
@@ -55,6 +55,8 @@ ActiveRecord::Schema.define(version: 20160501100332) do
     t.datetime "created_at",                                                              null: false
     t.datetime "updated_at",                                                              null: false
     t.integer  "kpa_cluster_id",                limit: 4
+    t.string   "project_summary_filename",      limit: 255
+    t.string   "project_brief_filename",        limit: 255
   end
 
   add_index "projects", ["kpa_cluster_id"], name: "index_projects_on_kpa_cluster_id", using: :btree

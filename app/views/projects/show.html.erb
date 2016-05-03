@@ -80,6 +80,9 @@
   <%= @project.account_number %>
 </p>
 
+<td><%= link_to "Download Project Summary", @project.project_summary_filename_url %></td>
+<td><%= link_to "Download Project Brief", @project.project_brief_filename_url %></td>
+
 <% @project.staffs.each do |staff| %>
 <p>
   <%= staff.first_name %>

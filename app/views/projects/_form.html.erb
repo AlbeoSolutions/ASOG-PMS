@@ -47,6 +47,17 @@
         </div>
       </div>
 
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.label :project_summary_filename, label: 'Upload Project Summary' %>
+          <%= f.file_field :project_summary_filename%>
+        </div>
+        <div class="col-md-6">
+            <%= f.label :project_brief_filename, label: 'Upload Brief Summary' %>
+            <%= f.file_field :project_brief_filename %>
+        </div>
+      </div>
+
     </div>
     <br>
     <div class="form-actions row">

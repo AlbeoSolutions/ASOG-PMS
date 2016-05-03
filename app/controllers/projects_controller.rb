@@ -13,6 +13,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
     @project = Project.find(params[:id])
+    @staff = current_staff
     #@staff = Staff.find(params[:id])
   end
 
@@ -73,6 +74,7 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:project_title, :project_acronym, :project_director, :funding_agency, :start_date, :end_date, :total_budget, :total_amount_spent, :account_number, :kpa_cluster_id)
+      params.require(:project).permit!
     end
+
 end

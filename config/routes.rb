@@ -2,12 +2,9 @@ Rails.application.routes.draw do
 
   get 'pages/index'
 
-  resources :projects
+  # resources :projects
 
-  resources :projects do
-    resources :tasks
-    resources :items
-  end
+
 
   #DEVISE ROUTING
 
@@ -16,6 +13,12 @@ Rails.application.routes.draw do
   devise_scope :staff do
     authenticated  do
       root to: 'projects#index'
+
+      resources :projects do
+        resources :tasks
+        resources :items
+      end
+      
     end
 
     unauthenticated do
