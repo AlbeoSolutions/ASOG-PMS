@@ -31,9 +31,10 @@
                 </div>
 
                   <ul class="dropdown-menu bullet pull-right" aria-labelledby="dropdownMenu1">
+                    <li class="dropdown-item"><strong>Signed in as:</strong></li>
                     <li class="dropdown-item"><%= current_staff.first_name %> <%= current_staff.last_name %> </li>
                     <li class="dropdown-item"> View Profile </li>
-                    <li> <%= link_to "Log Out", destroy_staff_session_path, method: :delete%></li>
+                    <li class="dropdown-item"> <%= link_to "Log Out", destroy_staff_session_path, method: :delete%></li>
                   </ul>
 
               </div></li>
@@ -96,6 +97,12 @@
 
 <!-- End of Main body -->
     </div>
+
+<div class="footer">
+  <h6>Powered by: Albeo Solutions</h6>
+</div>
+
+
 
 </body>
 </html>
