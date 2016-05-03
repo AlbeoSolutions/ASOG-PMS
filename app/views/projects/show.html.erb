@@ -82,7 +82,12 @@
 
 <p>
   <strong>Project Summary:</strong>
-  <%= link_to "Download Project Summary", @project.attachment_url %>
+  <%= link_to "Download Project Summary", @project.summary_filename_url %>
+</p>
+
+<p>
+  <strong>Project Brief:</strong>
+  <%= link_to "Download Project Brief", @project.brief_filename_url %>
 </p>
 
 <% @project.staffs.each do |staff| %>

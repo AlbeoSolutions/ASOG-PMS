@@ -49,8 +49,12 @@
 
       <div class="row">
         <div class="col-md-6">
-          <%= f.label :attachment, label: 'Upload Project Summary' %>
-          <%= f.file_field :attachment, label: 'Upload Project Summary'%>
+          <%= f.label :summary_filename, label: 'Upload Project Summary' %>
+          <%= f.file_field :summary_filename, label: 'Upload Project Summary'%>
+        </div>
+        <div class="col-md-6">
+          <%= f.label :brief_filename, label: 'Upload Project Brief' %>
+          <%= f.file_field :brief_filename, label: 'Upload Project Brief'%>
         </div>
       </div>
 
