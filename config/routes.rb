@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   devise_scope :staff do
     authenticated  do
-      root to: 'pages#index'
+      root to: 'projects#index'
     end
 
     unauthenticated do

@@ -21,21 +21,24 @@
           <a class="navbar-brand" href="#"><%= image_tag("ASOG-PMS logo 1.png", :alt => "logo", :class => "logo") %></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
+          <% if staff_signed_in? %>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Home</a></li>
             <li><a href="#">Notifications</a></li>
             <li id="user-icon">
               <div class="dropdown" id="user-menu">
                 <div class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                   <%= image_tag("user icon.png", :alt => "user-icon", :class => "user-icon") %>
                 </div>
-                <ul class="dropdown-menu bullet pull-right" aria-labelledby="dropdownMenu1">
-                  <li class="dropdown-item"> <%= current_staff.first_name %> <%= current_staff.last_name %> </li>
-                  <li class="dropdown-item"> View Profile </li>
-                  <li> <%= link_to "Log Out", destroy_staff_session_path, method: :delete%></li>
-                </ul>
+
+                  <ul class="dropdown-menu bullet pull-right" aria-labelledby="dropdownMenu1">
+                    <li class="dropdown-item"><%= current_staff.first_name %> <%= current_staff.last_name %> </li>
+                    <li class="dropdown-item"> View Profile </li>
+                    <li> <%= link_to "Log Out", destroy_staff_session_path, method: :delete%></li>
+                  </ul>
+
               </div></li>
           </ul>
+          <% end %>
         </div>
       </div>
     </nav>
@@ -59,24 +62,22 @@
               </div>
           </form>
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
+            <!-- <li class="active"><a href="#">All Projects<span class="sr-only">(current)</span></a></li> -->
+            <li><%= link_to 'All projects', root_url %> </li>
             <li><%= link_to 'Create new project', new_project_path %></li>
-            <li></li>
-            <li><a href="#">Analytics</a></li>
-            <li><a href="#">Export</a></li>
           </ul>
+
           <ul class="nav nav-sidebar">
             <li><a href="">Add New Staff</a></li>
             <li><a href="">Add New Admin</a></li>
             <li><a href="">Disable User</a></li>
-            <li><a href="">Another nav item</a></li>
-            <li><a href="">More navigation</a></li>
           </ul>
-          <ul class="nav nav-sidebar">
+
+          <!-- <ul class="nav nav-sidebar">
             <li><a href="">Nav item again</a></li>
             <li><a href="">One more nav</a></li>
             <li><a href="">Another nav item</a></li>
-          </ul>
+          </ul> -->
         </div>
 <!-- End of Side-bar -->
 
