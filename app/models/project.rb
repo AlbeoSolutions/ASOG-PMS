@@ -10,6 +10,8 @@ class Project < ActiveRecord::Base
   accepts_nested_attributes_for :tasks
   accepts_nested_attributes_for :items
 
+  mount_uploader :attachment, AttachmentUploader 
+
   def to_s
     "#{self.project_title}"
   end
