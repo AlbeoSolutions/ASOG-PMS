@@ -1,6 +1,28 @@
+<% if current_staff.admin? %>
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Projects</h1>
+
+<div class="row">
+  <% @projects.each do |project| %>
+    <div class="col-md-6 box-container">
+      <div class="project-box">
+        <div class="row">
+          <div class="col-xs-3">
+            <div class="ey">
+              <h1 class="box-icon"><span class="glyphicon glyphicon-th-large"></span></h1>
+            </div>
+          </div>
+          <div class="col-xs-9">
+            <h4><%= link_to project.project_title, project %></h4>
+            <h5><%= project.project_director %></h5>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  <% end %>
+</div>
 
 <table>
   <thead>
@@ -41,3 +63,9 @@
 <br>
 
 <%= link_to 'New Project', new_project_path %>
+
+<% else %>
+
+  <%= render template:"_accessDenied.html.erb" %>
+
+<% end %>

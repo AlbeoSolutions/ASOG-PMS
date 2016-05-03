@@ -2,6 +2,35 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+// INDEX PROJECT STYLING
+
+.project-box {
+  height: 100px;
+  background: #eeeeee;
+  margin: auto;
+
+  .ey {
+    background: #1C3F94;
+    // padding-left: 15px;
+    height: 100px ;
+  }
+
+  .box-icon {
+    margin-top: 0;
+    color: white;
+    text-align: center;
+    padding-top: 30px;
+
+  }
+
+}
+
+.box-container {
+  margin-bottom: 20px;
+}
+
+
+
 
 // NEW PROJECT STYLING
 .new-project-form {
@@ -11,8 +40,6 @@
   }
 
 }
-
-
 
 // SHOW PROJECT STYLING
 

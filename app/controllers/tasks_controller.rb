@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_staff!
 
   # GET /tasks
   # GET /tasks.json
@@ -17,13 +18,12 @@ class TasksController < ApplicationController
   # GET /tasks/new
   def new
     @project = Project.find(params[:project_id])
-    # @task = Task.new
     @task = @project.tasks.build
-
   end
 
   # GET /tasks/1/edit
   def edit
+    @project = Project.find(params[:project_id])
   end
 
   # POST /tasks

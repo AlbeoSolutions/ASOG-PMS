@@ -1,5 +1,15 @@
 <p id="notice"><%= notice %></p>
 
+<table class="table table-bordered project-nav">
+  <tr>
+    <td> <%= link_to 'Profile', project_path(@project) %></td>
+    <td class="project-active"><a href="#"> Work Plan </a></td>
+    <td> <%= link_to 'Expenditure', project_items_path(@project) %> </td>
+    <td> Pogress </td>
+    <td> Options </td>
+  </tr>
+</table>
+
 <div class="index-tasks">
   <h1>Project Work Plan</h1>
   <h2><%= @project.project_title%></h2>
@@ -29,6 +39,7 @@
     </tbody>
   </table>
   <br>
-
+  
   <%= link_to 'New Task', new_project_task_path(:project_id => params[:project_id]) %>
+
 </div>

@@ -1,35 +1,44 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Items</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Item title</th>
-      <th>Budget</th>
-      <th>Amount spent</th>
-      <th>Balance left</th>
-      <th>Percentage spent</th>
-      <th>Comments</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @items.each do |item| %>
-      <tr>
-        <td><%= item.item_title %></td>
-        <td><%= item.budget %></td>
-        <td><%= item.amount_spent %></td>
-        <td><%= item.balance_left %></td>
-        <td><%= item.percentage_spent %></td>
-        <td><%= item.comments %></td>
-        <td><%= link_to 'Show', item %></td>
-        <td><%= link_to 'Edit', edit_item_path(item) %></td>
-        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+<table class="table table-bordered project-nav">
+  <tr>
+    <td> <%= link_to 'Profile', project_path(@project) %></td>
+    <td> <%= link_to 'Work Plan', project_tasks_path(@project) %> </td>
+    <td class="project-active"><a> Expenditure </a></td>
+    <td> Pogress </td>
+    <td> Options </td>
+  </tr>
 </table>
 
-<br>
+<div class="index-items">
+  <h1>Project Expenditure</h1>
+
+  <h2><%= @project.project_title%></h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Approved Budget</th>
+        <th>Amount spent</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @project.items.each do |item| %>
+        <tr>
+          <td><%= item.item_title %></td>
+          <td><%= item.budget %></td>
+          <td><%= item.amount_spent %></td>          
+          <td><%= link_to 'Show', project_item_path(:id => item.id, :project_id => params[:project_id]) %></td>
+          <td><%= link_to 'Edit', edit_project_item_path(:id => item.id, :project_id => params[:project_id]) %></td>
+          <td><%= link_to 'Destroy', project_item_path(:id => item.id, :project_id => params[:project_id]), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'Add item',  new_project_item_path(:project_id => params[:project_id])%>
+</div>

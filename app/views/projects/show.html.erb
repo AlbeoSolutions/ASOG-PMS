@@ -1,5 +1,17 @@
 <p id="notice"><%= notice %></p>
 
+
+<table class="table table-bordered project-nav">
+  <tr>
+    <td class="project-active"><a href="#"> Profile <a></td>
+    <td> <%= link_to 'Work Plan', project_tasks_path(@project) %> </td>
+    <td> <%= link_to 'Expenditure', project_items_path(@project) %> </td>
+    <td> Pogress </td>
+    <td> Options </td>
+  </tr>
+</table>
+
+
 <h1 class="hey">Project Profile</h1>
 
 
@@ -69,9 +81,12 @@
 </p>
 
 <% @project.staffs.each do |staff| %>
+<p>
   <%= staff.first_name %>
+</p>
 <% end %>
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back to Home', projects_path %>
 <%= link_to 'Edit Work Plan',  new_project_task_path(:project_id => @project.id)%>
+<%= link_to 'Add item',  new_project_item_path(:project_id => @project.id)%>

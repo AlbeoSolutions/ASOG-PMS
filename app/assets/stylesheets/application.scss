@@ -167,3 +167,47 @@ body {
 
 
 }
+
+
+/* Project Navigation */
+
+.project-nav {
+	margin-top: 40px;
+	margin-bottom: 30px;
+	text-align: center;
+
+	a {
+		color: black;
+		text-decoration: none;
+	}
+
+	a:hover {
+		background: none;
+	}
+}
+
+
+.project-active {
+	background: #1C3F94;
+
+	a {
+		color: white;
+	}
+
+}
+
+
+/* ACCESS DENIED STYLINGS */
+
+.access-denied {
+	background: #e53935;
+	color: white;
+	padding: 35px;
+	margin-top: 40px;
+	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+
+	h1	{
+		text-align: center;
+		font-weight: lighter;
+	}
+}

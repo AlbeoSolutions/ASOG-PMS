@@ -7,15 +7,16 @@
       <%= f.input :task_title %>
       <%= f.input :description %>
       <%= f.input :due_date %>
-      <%= f.input :date_accomplished %>
       <%= f.hidden_field  :project_id, :value => params[:project_id] %>
     </div>
-
+<br>
     <div class="form-actions">
        <%= link_to 'Back', project_tasks_path, class: "btn btn-danger" %>
       <%= f.button :submit, class: "btn btn-primary" %>
     </div>
   <% end %>
+
+<br>
   <input type="button" value="Add another text input" onClick="addInput('dynamicInput');">
 
 </div>

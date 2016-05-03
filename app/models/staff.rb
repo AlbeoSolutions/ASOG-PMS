@@ -13,6 +13,7 @@ class Staff < ActiveRecord::Base
    accepts_nested_attributes_for :jobs
 
    def to_s
-     "SWAGGG"
+     "#{first_name last_name}"
    end
+
 end
