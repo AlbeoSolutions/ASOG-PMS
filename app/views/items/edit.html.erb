@@ -1,6 +1,9 @@
-<h1>Editing Item</h1>
 
-<%= render 'form' %>
 
+<% if current_staff.admin? %>
+  <%= render 'form' %>
+<% else %>
+  <%= render 'expenditureForm' %>
+<% end %>
 
 <%= link_to 'Back', project_items_path(:project_id => params[:project_id]) %>

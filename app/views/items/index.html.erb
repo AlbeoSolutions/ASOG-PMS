@@ -29,9 +29,9 @@
         <tr>
           <td><%= item.item_title %></td>
           <td><%= item.budget %></td>
-          <td><%= item.amount_spent %></td>          
+          <td><%= item.amount_spent %></td>
           <td><%= link_to 'Show', project_item_path(:id => item.id, :project_id => params[:project_id]) %></td>
-          <td><%= link_to 'Edit', edit_project_item_path(:id => item.id, :project_id => params[:project_id]) %></td>
+          <td><%= link_to 'Edits', edit_project_item_path(:id => item.id, :project_id => params[:project_id]) %></td>
           <td><%= link_to 'Destroy', project_item_path(:id => item.id, :project_id => params[:project_id]), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>

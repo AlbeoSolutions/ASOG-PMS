@@ -19,11 +19,15 @@ class ItemsController < ApplicationController
   def new
     @project = Project.find(params[:project_id])
     @item = @project.items.build
+    @path = project_items_path(@project, @item)
+    @method = :post
   end
 
   # GET /items/1/edit
   def edit
     @project = Project.find(params[:project_id])
+    @path = project_item_path(@project, @item)
+    @method = :patch
   end
 
   # POST /items
@@ -47,7 +51,7 @@ class ItemsController < ApplicationController
   def update
     respond_to do |format|
       if @item.update(item_params)
-        format.html { redirect_to @item, notice: 'Item was successfully updated.' }
+        format.html { redirect_to project_item_path(:id => @item.id, :project_id => params[:project_id]), notice: 'Task was successfully created.' }
         format.json { render :show, status: :ok, location: @item }
       else
         format.html { render :edit }
@@ -61,7 +65,7 @@ class ItemsController < ApplicationController
   def destroy
     @item.destroy
     respond_to do |format|
-      format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
+      format.html { redirect_to project_items_url, notice: 'Item was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

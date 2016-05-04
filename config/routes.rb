@@ -4,8 +4,6 @@ Rails.application.routes.draw do
 
   # resources :projects
 
-
-
   #DEVISE ROUTING
 
   devise_for :staffs, :controllers => { registrations: 'registrations' }
@@ -18,7 +16,7 @@ Rails.application.routes.draw do
         resources :tasks
         resources :items
       end
-      
+
     end
 
     unauthenticated do

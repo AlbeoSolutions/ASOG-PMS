@@ -1,24 +1,23 @@
+<h1>Add Expenditure for (<%= @item.item_title %>)</h1>
 <%= simple_form_for @item, url: @path, method: @method do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
     <div class="row">
-      <div class="col-md-6">
-        <%= f.input :item_title %>
+        <h3></h3>
+        <%= f.input :amount_spent %>
+        <%= f.input :comments %>
       </div>
-      <div class="col-md-6">
-        <%= f.input :budget %>
-      </div>
-    </div>
+  </div>
 
     <%= f.hidden_field  :project_id, :value => params[:project_id] %>
     <!-- <%= f.input :amount_spent %>
     <%= f.input :balance_left %>
     <%= f.input :percentage_spent %>
     <%= f.input :comments %> -->
-  </div>
 
-  <div class="form-actions">
+
+  <div class="form-actions row">
     <%= f.button :submit, class: "btn btn-primary" %>
   </div>
 <% end %>

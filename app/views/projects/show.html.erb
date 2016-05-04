@@ -44,52 +44,14 @@
   </tr>
 </table>
 
+<%= link_to "Download Project Summary", @project.project_summary_filename_url, class: "btn download-btn" %>
+<%= link_to "Download Project Brief", @project.project_brief_filename_url, class: "btn download-btn" %>
 
-<p>
-  <strong>Project director:</strong>
-  <%= @project.project_director %>
-</p>
 
-<p>
-  <strong>Funding agency:</strong>
-  <%= @project.funding_agency %>
-</p>
 
-<p>
-  <strong>Start date:</strong>
-  <%= @project.start_date %>
-</p>
-
-<p>
-  <strong>End date:</strong>
-  <%= @project.end_date %>
-</p>
-
-<p>
-  <strong>Total budget:</strong>
-  <%= @project.total_budget %>
-</p>
-
-<p>
-  <strong>Total amount spent:</strong>
-  <%= @project.total_amount_spent %>
-</p>
-
-<p>
-  <strong>Account number:</strong>
-  <%= @project.account_number %>
-</p>
-
-<td><%= link_to "Download Project Summary", @project.project_summary_filename_url %></td>
-<td><%= link_to "Download Project Brief", @project.project_brief_filename_url %></td>
-
+<h5>Staff</h5>
 <% @project.staffs.each do |staff| %>
 <p>
   <%= staff.first_name %>
 </p>
 <% end %>
-
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back to Home', projects_path %>
-<%= link_to 'Edit Work Plan',  new_project_task_path(:project_id => @project.id)%>
-<%= link_to 'Add item',  new_project_item_path(:project_id => @project.id)%>
