@@ -51,17 +51,9 @@
 <% if staff_signed_in? %>
 <!-- Start of Side-bar -->
         <div class="col-sm-3 col-md-2 sidebar">
-          <form id="search-bar">
-            <div class="input-group">
-            	<input type="text" class="form-control" placeholder="Search..." aria-describedby="basic-addon1">
-              <span class="input-group-btn" id="basic-addon1">
-                <button class="btn btn-default" type="button">
-                  <span class="glyphicon glyphicon-search">
-                  </span>
-                </button>
-              </span>
-              </div>
-          </form>
+
+      
+
           <ul class="nav nav-sidebar">
             <!-- <li class="active"><a href="#">All Projects<span class="sr-only">(current)</span></a></li> -->
             <li><%= link_to 'All projects', root_url %> </li>

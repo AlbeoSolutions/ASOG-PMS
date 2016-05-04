@@ -25,10 +25,29 @@
   <%= @item.percentage_spent %>
 </p>
 
-<p>
-  <strong>Comments:</strong>
-  <%= @item.comments %>
-</p>
+
+<table class="table">
+  <thead>
+    <th>Amount Spent</th>
+    <th>Comments</th>
+    <th>Date</th>
+  </thead>
+    <tbody>
+      <%@item.records.each do |record| %>
+      <td class="text-right"> <%= record.expenditure %> </td>
+      <td> <%= record.comments %> </td>
+      <td><%= record.created_at %> </td>
+    </tbody>
+      <% end %>
+  </table>
+
+  </p>
+
+
+
+
 
 <%= link_to 'Edit', edit_project_item_path(:id => @item.id, :project_id => params[:project_id]) %> |
 <%= link_to 'Back', project_items_path(:project_id => params[:project_id]) %>
+
+<%= link_to 'New record', new_project_item_record_path(@project.id, @item.id) %>

@@ -7,7 +7,7 @@ class CreateItems < ActiveRecord::Migration
       t.float :amount_spent, default: 0
       t.float :balance_left
       t.float :percentage_spent, default: 0
-      t.text :comments
+      
 
       t.timestamps null: false
     end

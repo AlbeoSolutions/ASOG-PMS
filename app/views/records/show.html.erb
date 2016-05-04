@@ -7,8 +7,7 @@
 
 <p>
   <strong>Item:</strong>
-  <%= @record.Item %>
+  <%= @record.item %>
 </p>
 
-<%= link_to 'Edit', edit_record_path(@record) %> |
-<%= link_to 'Back', records_path %>
+<%= link_to 'Edit', edit_project_item_record_path(params[:project_id], params[:item_id], @record) %> |

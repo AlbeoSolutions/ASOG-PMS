@@ -5,13 +5,12 @@
     <td> <%= link_to 'Profile', project_path(@project) %></td>
     <td> <%= link_to 'Work Plan', project_tasks_path(@project) %> </td>
     <td class="project-active"><a> Expenditure </a></td>
-    <td> Pogress </td>
+    <td> Progress </td>
     <td> Options </td>
   </tr>
 </table>
 
 <div class="index-items">
-  <h1>Project Expenditure</h1>
 
   <h2><%= @project.project_title%></h2>
   <table class="table">
@@ -28,8 +27,8 @@
       <% @project.items.each do |item| %>
         <tr>
           <td><%= item.item_title %></td>
-          <td><%= item.budget %></td>
-          <td><%= item.amount_spent %></td>
+          <td class="text-right"><%= item.budget %></td>
+          <td class="text-right"><%= item.amount_spent %></td>
           <td><%= link_to 'Show', project_item_path(:id => item.id, :project_id => params[:project_id]) %></td>
           <td><%= link_to 'Edits', edit_project_item_path(:id => item.id, :project_id => params[:project_id]) %></td>
           <td><%= link_to 'Destroy', project_item_path(:id => item.id, :project_id => params[:project_id]), method: :delete, data: { confirm: 'Are you sure?' } %></td>

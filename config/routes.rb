@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-
-  resources :records
+  
   get 'pages/index'
 
   # resources :projects

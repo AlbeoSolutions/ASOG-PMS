@@ -1,5 +1,5 @@
 class Item < ActiveRecord::Base
-  has_many :records 
+  has_many :records
   belongs_to :project
 
   #Callbacks
@@ -19,4 +19,7 @@ class Item < ActiveRecord::Base
     self.percentage_spent = (self.amount_spent / self.budget) * 100
   end
 
+  def to_s
+    "#{self.item_title}"
+  end
 end

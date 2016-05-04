@@ -17,12 +17,11 @@ ActiveRecord::Schema.define(version: 20160504060127) do
     t.integer  "project_id",       limit: 4
     t.string   "item_title",       limit: 255
     t.float    "budget",           limit: 24
-    t.float    "amount_spent",     limit: 24,    default: 0.0
+    t.float    "amount_spent",     limit: 24,  default: 0.0
     t.float    "balance_left",     limit: 24
-    t.float    "percentage_spent", limit: 24,    default: 0.0
-    t.text     "comments",         limit: 65535
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
+    t.float    "percentage_spent", limit: 24,  default: 0.0
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
   end
 
   add_index "items", ["project_id"], name: "index_items_on_project_id", using: :btree
@@ -63,12 +62,13 @@ ActiveRecord::Schema.define(version: 20160504060127) do
 
   create_table "records", force: :cascade do |t|
     t.float    "expenditure", limit: 24
-    t.integer  "Item_id",     limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.text     "comments",    limit: 65535
+    t.integer  "item_id",     limit: 4
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
-  add_index "records", ["Item_id"], name: "index_records_on_Item_id", using: :btree
+  add_index "records", ["item_id"], name: "index_records_on_item_id", using: :btree
 
   create_table "staffs", force: :cascade do |t|
     t.string   "first_name",               limit: 255
@@ -106,5 +106,5 @@ ActiveRecord::Schema.define(version: 20160504060127) do
   add_index "tasks", ["project_id"], name: "index_tasks_on_project_id", using: :btree
 
   add_foreign_key "projects", "kpa_clusters"
-  add_foreign_key "records", "Items"
+  add_foreign_key "records", "items"
 end

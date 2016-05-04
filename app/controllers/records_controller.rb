@@ -1,9 +1,16 @@
 class RecordsController < ApplicationController
   before_action :set_record, only: [:show, :edit, :update, :destroy]
 
+
+
+
+
+
+
   # GET /records
   # GET /records.json
   def index
+    @project = Project.find(params[:project_id])
     @records = Record.all
   end
 
@@ -14,6 +21,8 @@ class RecordsController < ApplicationController
 
   # GET /records/new
   def new
+    @project = Project.find(params[:project_id])
+    @item = Item.find(params[:item_id])
     @record = Record.new
   end
 
@@ -28,7 +37,7 @@ class RecordsController < ApplicationController
 
     respond_to do |format|
       if @record.save
-        format.html { redirect_to @record, notice: 'Record was successfully created.' }
+        format.html { redirect_to project_item_path(params[:project_id], params[:item_id]), notice: 'Record was successfully created.' }
         format.json { render :show, status: :created, location: @record }
       else
         format.html { render :new }
@@ -69,6 +78,6 @@ class RecordsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def record_params
-      params.require(:record).permit(:expenditure, :Item_id)
+      params.require(:record).permit(:expenditure, :item_id, :comments)
     end
 end
