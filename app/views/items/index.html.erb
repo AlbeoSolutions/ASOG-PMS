@@ -1,43 +1,62 @@
-<p id="notice"><%= notice %></p>
+<div class="row project-nav">
+  <%= link_to project_path(@project) do %>
+    <div class="col-xs-3">
+       Profile
+    </div>
+  <% end %>
 
-<table class="table table-bordered project-nav">
-  <tr>
-    <td> <%= link_to 'Profile', project_path(@project) %></td>
-    <td> <%= link_to 'Work Plan', project_tasks_path(@project) %> </td>
-    <td class="project-active"><a> Expenditure </a></td>
-    <td> Progress </td>
-    <td> Options </td>
-  </tr>
-</table>
+  <%= link_to project_tasks_path(@project) do %>
+    <div class="col-xs-3">
+       Work Plan
+    </div>
+  <% end %>
 
-<div class="index-items">
+  <%= link_to project_items_path(@project) do %>
+    <div class="col-xs-3 project-active">
+       Expenditure
+    </div>
+  <% end %>
 
-  <h2><%= @project.project_title%></h2>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Item</th>
-        <th>Approved Budget</th>
-        <th>Amount spent</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
+  <%= link_to project_tasks_path(@project) do %>
+    <div class="col-xs-3">
+       Progress
+    </div>
+  <% end %>
+</div>
 
-    <tbody>
-      <% @project.items.each do |item| %>
+
+
+<div class="main-wrapper">
+  <p id="notice"><%= notice %></p>
+
+  <div class="index-items">
+    <h2 class="project-heading"><%= @project.project_title%></h2><br>
+    <table class="table">
+      <thead>
         <tr>
-          <td><%= item.item_title %></td>
-          <td class="text-right"><%= item.budget %></td>
-          <td class="text-right"><%= item.amount_spent %></td>
-          <td><%= link_to 'Show', project_item_path(:id => item.id, :project_id => params[:project_id]) %></td>
-          <td><%= link_to 'Edits', edit_project_item_path(:id => item.id, :project_id => params[:project_id]) %></td>
-          <td><%= link_to 'Destroy', project_item_path(:id => item.id, :project_id => params[:project_id]), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <th>Item</th>
+          <th>Approved Budget</th>
+          <th>Amount spent</th>
+          <th colspan="3"></th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
 
-  <br>
+      <tbody>
+        <% @project.items.each do |item| %>
+          <tr>
+            <td><%= item.item_title %></td>
+            <td class="text-right"><%= item.budget %></td>
+            <td class="text-right"><%= item.amount_spent %></td>
+            <td><%= link_to 'Show', project_item_path(:id => item.id, :project_id => params[:project_id]) %></td>
+            <td><%= link_to 'Edits', edit_project_item_path(:id => item.id, :project_id => params[:project_id]) %></td>
+            <td><%= link_to 'Destroy', project_item_path(:id => item.id, :project_id => params[:project_id]), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-  <%= link_to 'Add item',  new_project_item_path(:project_id => params[:project_id])%>
+    <br>
+
+    <%= link_to 'Add item',  new_project_item_path(:project_id => params[:project_id])%>
+  </div>
 </div>

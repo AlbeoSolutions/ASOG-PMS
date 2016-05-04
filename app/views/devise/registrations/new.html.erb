@@ -1,36 +1,54 @@
-<h2>Create new Staff account</h2>
+<h2 class="form-head">Create new Staff account</h2>
 
-<div class="new-registration-form">
+<div class="form-wrapper">
+  <div class="new-registration-form">
 
-  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= f.error_notification %>
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= f.error_notification %>
 
-    <div class="form-inputs row">
-      <div class="row">
-        <div class="col-md-6">
-            <%= f.input :first_name %>
+      <div class="form-inputs row">
+        <div class="row">
+          <div class="col-md-6">
+              <%= f.input :first_name %>
+          </div>
+          <div class="col-md-6">
+              <%= f.input :last_name %>
+          </div>
         </div>
-        <div class="col-md-6">
-            <%= f.input :last_name %>
+
+        <div class="row">
+          <div class="col-md-12">
+            <%= f.input :email, required: true, autofocus: true %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+          </div>
+          <div class="col-md-6">
+            <%= f.input :password_confirmation, required: true %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <%= f.association :projects, :input_html => { :size => '3'}  %>
+            <%= f.input :contract_expiration_date, required: true %>
+          </div
         </div>
       </div>
-      <div class="row">
+
+      <div class="form-actions row">
         <div class="col-md-12">
-          <%= f.input :email, required: true, autofocus: true %>
-          <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-          <%= f.input :password_confirmation, required: true %>
-          <%= f.association :projects, :input_html => { :size => '3'}  %>
-          <%= f.input :contract_expiration_date, required: true %>
+          <%= f.button :submit, "Create", class: "btn btn-primary" %>
         </div>
       </div>
-    </div>
+    <% end %>
 
-    <div class="form-actions row">
-      <%= f.button :submit, "Create", class: "btn btn-primary" %>
-    </div>
-  <% end %>
+  </div>
+
+
+  <!-- <%= render "devise/shared/links" %> -->
 
 </div>
-
-
-<!-- <%= render "devise/shared/links" %> -->

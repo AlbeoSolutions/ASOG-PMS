@@ -7,6 +7,8 @@ class TasksController < ApplicationController
   def index
     @project = Project.find(params[:project_id])
     @tasks = Task.all
+
+    @sort = @project.tasks.sort_by &:due_date
   end
 
   # GET /tasks/1

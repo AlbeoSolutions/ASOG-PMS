@@ -12,12 +12,12 @@
 
 .project-box {
   height: 100px;
-  background: #eeeeee;
+  background: #fff;
   margin: auto;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
 
-  .ey {
+  .project-icon-wrapper {
     background: #1C3F94;
-    // padding-left: 15px;
     height: 100px ;
   }
 

@@ -1,57 +1,72 @@
-<p id="notice"><%= notice %></p>
+<div class="row project-nav">
+  <%= link_to project_path(@project) do %>
+    <div class="col-xs-3 project-active">
+       Profile
+    </div>
+  <% end %>
 
+  <%= link_to project_tasks_path(@project) do %>
+    <div class="col-xs-3">
+       Work Plan
+    </div>
+  <% end %>
 
-<table class="table table-bordered project-nav">
-  <tr>
-    <td class="project-active"><a href="#"> Profile <a></td>
-    <td> <%= link_to 'Work Plan', project_tasks_path(@project) %> </td>
-    <td> <%= link_to 'Expenditure', project_items_path(@project) %> </td>
-    <td> Progress </td>
-    <td> Options </td>
-  </tr>
-</table>
+  <%= link_to project_items_path(@project) do %>
+    <div class="col-xs-3">
+       Expenditure
+    </div>
+  <% end %>
 
-
-
-
-
-<h2> <%= @project.project_title %> </h2>
-
-<!-- <p>
-  <strong>Project acronym:</strong>
-  <%= @project.project_acronym %>
-</p> -->
-
-<table class="table table-bordered project-profile-table">
-  <tr>
-    <th class="table-heading"> KPA Cluster </th>
-    <td > <%= @project.kpa_cluster %> </td>
-  </tr>
-
-  <tr>
-    <th class="table-heading"> Start Date </th>
-    <td> <%= @project.start_date %> </td>
-  </tr>
-
-  <tr>
-    <th class="table-heading"> End Date </th>
-    <td> <%= @project.end_date %> </td>
-  </tr>
-
-  <tr>
-    <th class="table-heading"> Project Director </th>
-    <td> <%= @project.project_director %> </td>
-  </tr>
-</table>
-
-<%= link_to "Download Project Summary", @project.project_summary_filename_url, class: "btn download-btn" %>
-<%= link_to "Download Project Brief", @project.project_brief_filename_url, class: "btn download-btn" %>
+  <%= link_to project_tasks_path(@project) do %>
+    <div class="col-xs-3">
+       Progress
+    </div>
+  <% end %>
+</div>
 
 
 
-<h5>Staff</h5>
-<% @project.staffs.each do |staff| %>
-<p>
-  <%= staff.first_name %>
-</p>
-<% end %>
+<div class="main-wrapper">
+
+  <p id="notice"><%= notice %></p>
+  <h2 class="project-heading"> <%= @project.project_title %> </h2><br>
+
+  <!-- <p>
+    <strong>Project acronym:</strong>
+    <%= @project.project_acronym %>
+  </p> -->
+
+  <table class="table table-bordered project-profile-table">
+    <tr>
+      <th class="table-heading"> KPA Cluster </th>
+      <td > <%= @project.kpa_cluster %> </td>
+    </tr>
+
+    <tr>
+      <th class="table-heading"> Start Date </th>
+      <td> <%= @project.start_date %> </td>
+    </tr>
+
+    <tr>
+      <th class="table-heading"> End Date </th>
+      <td> <%= @project.end_date %> </td>
+    </tr>
+
+    <tr>
+      <th class="table-heading"> Project Director </th>
+      <td> <%= @project.project_director %> </td>
+    </tr>
+  </table>
+
+  <%= link_to "Download Project Summary", @project.project_summary_filename_url, class: "btn download-btn" %>
+  <%= link_to "Download Project Brief", @project.project_brief_filename_url, class: "btn download-btn" %>
+
+
+
+  <h5>Staff</h5>
+  <% @project.staffs.each do |staff| %>
+  <p>
+    <%= staff.first_name %>
+  </p>
+  <% end %>
+</div>

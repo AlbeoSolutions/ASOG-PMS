@@ -1,44 +1,194 @@
-<p id="notice"><%= notice %></p>
+<div class="row project-nav">
+  <%= link_to project_path(@project) do %>
+    <div class="col-xs-3">
+       Profile
+    </div>
+  <% end %>
 
-<table class="table table-bordered project-nav">
-  <tr>
-    <td> <%= link_to 'Profile', project_path(@project) %></td>
-    <td class="project-active"><a href="#"> Work Plan </a></td>
-    <td> <%= link_to 'Expenditure', project_items_path(@project) %> </td>
-    <td> Progress </td>
-    <td> Options </td>
-  </tr>
-</table>
+  <%= link_to project_tasks_path(@project) do %>
+    <div class="col-xs-3 project-active">
+       Work Plan
+    </div>
+  <% end %>
 
-<div class="index-tasks">
-  <h2><%= @project.project_title%></h2>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Task title</th>
-        <th>Description</th>
-        <th>Due date</th>
-        <th>Date accomplished</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
+  <%= link_to project_items_path(@project) do %>
+    <div class="col-xs-3">
+       Expenditure
+    </div>
+  <% end %>
 
-    <tbody>
-      <% @project.tasks.each do |task| %>
-          <tr>
-            <td><%= task.task_title %></td>
-            <td><%= task.description %></td>
-            <td><%= task.due_date %></td>
-            <td><%= task.date_accomplished %></td>
-            <td><%= link_to 'Show', project_task_path(:id => task.id, :project_id => params[:project_id]) %></td>
-            <td><%= link_to 'Edit', edit_project_task_path(:id => task.id, :project_id => params[:project_id]) %></td>
-            <td><%= link_to 'Destroy', project_task_path(:id => task.id, :project_id => params[:project_id]), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          </tr>
+  <%= link_to project_tasks_path(@project) do %>
+    <div class="col-xs-3">
+       Progress
+    </div>
+  <% end %>
+</div>
+
+<div class="main-wrapper">
+  <p id="notice"><%= notice %></p>
+
+  <div class="index-tasks">
+    <h2 class="project-heading"><%= @project.project_title%></h2><br>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Task title</th>
+          <th>Description</th>
+          <th>Due date</th>
+          <th>Date accomplished</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @project.tasks.each do |task| %>
+            <tr>
+              <td><%= task.task_title %></td>
+              <td><%= task.description %></td>
+              <td><%= task.due_date %></td>
+              <td><%= task.date_accomplished %></td>
+              <td><%= link_to 'Show', project_task_path(:id => task.id, :project_id => params[:project_id]) %></td>
+              <td><%= link_to 'Edit', edit_project_task_path(:id => task.id, :project_id => params[:project_id]) %></td>
+              <td><%= link_to 'Destroy', project_task_path(:id => task.id, :project_id => params[:project_id]), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <br>
+
+    <%= link_to 'New Task', new_project_task_path(:project_id => params[:project_id]) %>
+
+  </div>
+</div>
+<!-- SWAGGY TESTING -->
+<div class="container timeline-wrapper">
+    <div class="page-header">
+        <h1 id="timeline">Timeline</h1>
+    </div>
+    <ul class="timeline">
+      <% @sort.each_with_index do |task, index| %>
+      <% if index.even? %>
+      <li>
+      <% else %>
+      <li class="timeline-inverted">
+      <%end%>
+        <div class="timeline-badge danger"><i class="glyphicon glyphicon-remove-sign"></i></div>
+        <div class="timeline-panel">
+          <div class="timeline-heading">
+            <h4 class="timeline-title"><%= task.task_title %></h4>
+            <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> <%= task.due_date %></small></p>
+          </div>
+          <div class="timeline-body">
+            <p><%= task.description %></p>
+            <hr>
+            <div class="btn-group">
+              <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
+                <i class="glyphicon glyphicon-cog"></i> <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><%= link_to 'Show', project_task_path(:id => task.id, :project_id => params[:project_id]) %></li>
+                <li><%= link_to 'Edit', edit_project_task_path(:id => task.id, :project_id => params[:project_id]) %></li>
+                <li><%= link_to 'Destroy', project_task_path(:id => task.id, :project_id => params[:project_id]), method: :delete, data: { confirm: 'Are you sure?' } %></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </li>
       <% end %>
-    </tbody>
-  </table>
-  <br>
 
-  <%= link_to 'New Task', new_project_task_path(:project_id => params[:project_id]) %>
 
+
+        <li>
+          <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4 class="timeline-title">Mussum ipsum cacilds</h4>
+              <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11 hours ago via Twitter</small></p>
+            </div>
+            <div class="timeline-body">
+              <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>
+            </div>
+          </div>
+        </li>
+        <li class="timeline-inverted">
+          <div class="timeline-badge warning"><i class="glyphicon glyphicon-credit-card"></i></div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4 class="timeline-title">Mussum ipsum cacilds</h4>
+            </div>
+            <div class="timeline-body">
+              <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>
+              <p>Suco de cevadiss, é um leite divinis, qui tem lupuliz, matis, aguis e fermentis. Interagi no mé, cursus quis, vehicula ac nisi. Aenean vel dui dui. Nullam leo erat, aliquet quis tempus a, posuere ut mi. Ut scelerisque neque et turpis posuere pulvinar pellentesque nibh ullamcorper. Pharetra in mattis molestie, volutpat elementum justo. Aenean ut ante turpis. Pellentesque laoreet mé vel lectus scelerisque interdum cursus velit auctor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ac mauris lectus, non scelerisque augue. Aenean justo massa.</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="timeline-badge danger"><i class="glyphicon glyphicon-credit-card"></i></div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4 class="timeline-title">Mussum ipsum cacilds</h4>
+            </div>
+            <div class="timeline-body">
+              <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>
+            </div>
+          </div>
+        </li>
+        <li class="timeline-inverted">
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4 class="timeline-title">Mussum ipsum cacilds</h4>
+            </div>
+            <div class="timeline-body">
+              <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="timeline-badge info"><i class="glyphicon glyphicon-floppy-disk"></i></div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4 class="timeline-title">Mussum ipsum cacilds</h4>
+            </div>
+            <div class="timeline-body">
+              <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>
+              <hr>
+              <div class="btn-group">
+                <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
+                  <i class="glyphicon glyphicon-cog"></i> <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Separated link</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4 class="timeline-title">Mussum ipsum cacilds</h4>
+            </div>
+            <div class="timeline-body">
+              <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>
+            </div>
+          </div>
+        </li>
+        <li class="timeline-inverted">
+          <div class="timeline-badge success"><i class="glyphicon glyphicon-thumbs-up"></i></div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4 class="timeline-title">Mussum ipsum cacilds</h4>
+            </div>
+            <div class="timeline-body">
+              <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>
+            </div>
+          </div>
+        </li>
+    </ul>
 </div>
