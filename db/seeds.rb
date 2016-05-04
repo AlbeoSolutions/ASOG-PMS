@@ -13,3 +13,7 @@ KpaCluster.create(kpa_title: 'Poverty')
 KpaCluster.create(kpa_title: 'Social Accountability')
 KpaCluster.create(kpa_title: 'Politics')
 KpaCluster.create(kpa_title: 'Climate Change and Environment')
+
+admin = Staff.create(email: "admin@albeo.com", first_name: "Admin", last_name: "Admin",password: "12341234", password_confirmation: "12341234")
+admin.toggle!(:admin)
+admin.save

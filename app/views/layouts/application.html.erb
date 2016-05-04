@@ -23,7 +23,21 @@
         <div id="navbar" class="navbar-collapse collapse">
           <% if staff_signed_in? %>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Notifications</a></li>
+            <li>
+              <div class="dropdown" id="user-menu">
+                <div class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  Notifications
+                </div>
+
+                  <ul class="dropdown-menu bullet pull-right" aria-labelledby="dropdownMenu1">
+                    <% @update = Update.last %>
+                    
+                      <li> <%= @update.content %> </li>
+                    
+                  </ul>
+
+              </div>
+            </li>
             <li id="user-icon">
               <div class="dropdown" id="user-menu">
                 <div class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
