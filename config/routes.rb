@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :records
   get 'pages/index'
 
   # resources :projects
@@ -14,7 +15,9 @@ Rails.application.routes.draw do
 
       resources :projects do
         resources :tasks
-        resources :items
+        resources :items do
+          resources :records
+        end
       end
 
     end

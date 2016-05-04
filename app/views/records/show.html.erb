@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Expenditure:</strong>
+  <%= @record.expenditure %>
+</p>
+
+<p>
+  <strong>Item:</strong>
+  <%= @record.Item %>
+</p>
+
+<%= link_to 'Edit', edit_record_path(@record) %> |
+<%= link_to 'Back', records_path %>

@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  expenditure: 1.5
+  Item_id: 
+
+two:
+  expenditure: 1.5
+  Item_id: 

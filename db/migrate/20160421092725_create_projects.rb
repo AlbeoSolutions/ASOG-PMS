@@ -7,9 +7,9 @@ class CreateProjects < ActiveRecord::Migration
       t.string :funding_agency
       t.date :start_date
       t.date :end_date, default: nil
-      t.decimal :total_budget
-      t.decimal :total_amount_spent, default: 0
-      t.decimal :actual_expenditure_percentage, default: 0
+      t.float :total_budget
+      t.float :total_amount_spent, default: 0
+      t.float :actual_expenditure_percentage, default: 0
       t.string :account_number
       t.boolean :isOngoing, default: true
 
