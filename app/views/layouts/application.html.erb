@@ -30,12 +30,13 @@
                 </div>
 
                   <ul class="dropdown-menu bullet pull-right scrollable-menu" aria-labelledby="dropdownMenu1">
+                    <li class="dropdown-item"> <strong><%= link_to "View all notifications", updates_path %></strong></li>
                     <% @updates = Update.where(read: false) %>
                     <% @updates.reverse.each do |update|  %>
                     
                       <li class="dropdown-item"> <%= link_to "#{update.content}", update_path(update.id) %> </li>
                     <% end %>
-                    <li class="dropdown=item"> <%= link_to "View all notifications", updates_path %></li>
+
                   </ul>
 
               </div>

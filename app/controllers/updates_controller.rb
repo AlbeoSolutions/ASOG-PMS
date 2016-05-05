@@ -1,20 +1,25 @@
 class UpdatesController < ApplicationController
   
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_staff!
 
   def index
   	@jobs = Job.where(staff_id: current_staff.id)
   	id = Array.new
   	@jobs.each do |job|
-  		id.push(job.project_id)
+  		project = job.project
+  		b = project.id
+  		id.push(b)
   	end
-  	@staff = current_staff
-
-  	@projects = Project.where(:id.in?(id))
-  	@updates = Update.where(@projects.include? :project_id)
+  	@projects = Array.new
+  	id.each do |i|
+  		project = Project.find(i)
+  		@projects.push(project)
+  	end
+  	
+  	
+  	
+  	
   
-  =
+  
 
   end
 
