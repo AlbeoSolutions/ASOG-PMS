@@ -27,9 +27,19 @@
   }
 }
 
+.workplan-table {
+  display: none;
+}
+
+#timeline {
+    text-align: center;
+    font-weight: lighter;
+}
 
 
-// ETO NA TALAGA
+
+// TIMELINE STYLING
+
 .timeline {
   list-style: none;
   padding: 20px 0 20px;
@@ -159,5 +169,6 @@
 }
 
 .timeline-wrapper {
-  width: 90% !important;
+  width: 85% !important;
+  margin: auto !important;
 }

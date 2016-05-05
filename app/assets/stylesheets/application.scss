@@ -261,11 +261,26 @@ body {
 
 /* FORM WRAPPER */
 
-.form-head,
-.project-heading {
+.form-head {
 	font-weight: lighter;
 	text-align: center;
 }
+
+.project-heading {
+	font-weight: lighter;
+}
+
+.add-to {
+	font-size: .8em ;
+	margin-left: 5px;
+}
+
+.add-to:hover {
+	color: #1C3F94;
+	background: none;
+}
+
+
 
 .form-wrapper {
 	margin: 25px 60px 0px 60px;

@@ -28,8 +28,18 @@
   <p id="notice"><%= notice %></p>
 
   <div class="index-tasks">
-    <h2 class="project-heading"><%= @project.project_title%></h2><br>
-    <table class="table">
+    <h3>Project Work plan <%= link_to new_project_task_path(:project_id => params[:project_id]), class: "add-to" do %> <span class="glyphicon glyphicon-plus"></span><%end%></h3>
+    <h4 class="project-heading"><%= @project.project_title%></h4><br>
+
+
+    <ul class="nav nav-tabs">
+      <li role="presentation" id="timeline-btn" class="active"><a onclick="showTimeline()" href="#">Timeline</a></li>
+      <li role="presentation" id="table-btn"><a onclick="showTable()" href="#">Table</a></li>
+    </ul><br>
+
+
+
+    <table class="table workplan-table">
       <thead>
         <tr>
           <th>Task title</th>
@@ -54,16 +64,15 @@
         <% end %>
       </tbody>
     </table>
-    <br>
-
-    <%= link_to 'New Task', new_project_task_path(:project_id => params[:project_id]) %>
 
   </div>
 </div>
-<!-- SWAGGY TESTING -->
+
+
+<!-- TIMELINE VIEW -->
 <div class="container timeline-wrapper">
     <div class="page-header">
-        <h1 id="timeline">Timeline</h1>
+        <h1 id="timeline">Project Timeline</h1>
     </div>
     <ul class="timeline">
       <% @sort.each_with_index do |task, index| %>

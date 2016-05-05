@@ -30,7 +30,8 @@
   <p id="notice"><%= notice %></p>
 
   <div class="index-items">
-    <h2 class="project-heading"><%= @project.project_title%></h2><br>
+    <h3>Project Expenditures <%= link_to new_project_item_path(:project_id => params[:project_id]), class: "add-to" do %><span class="glyphicon glyphicon-plus"></span><% end %></h3>
+    <h4 class="project-heading"><%= @project.project_title%></h4><br>
     <table class="table">
       <thead>
         <tr>
@@ -55,8 +56,5 @@
       </tbody>
     </table>
 
-    <br>
-
-    <%= link_to 'Add item',  new_project_item_path(:project_id => params[:project_id])%>
   </div>
 </div>
