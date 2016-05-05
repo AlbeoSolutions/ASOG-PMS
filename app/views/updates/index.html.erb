@@ -1,0 +1,5 @@
+<h1> View all notifications </h1>
+
+<% @updates.reverse.each do |update| %>
+<p> <%= update.project_id %> : <%= update.created_at %> : <%= update.content %> </p>
+<% end %>

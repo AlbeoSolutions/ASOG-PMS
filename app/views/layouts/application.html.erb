@@ -29,11 +29,13 @@
                   Notifications
                 </div>
 
-                  <ul class="dropdown-menu bullet pull-right" aria-labelledby="dropdownMenu1">
-                    <% @update = Update.last %>
+                  <ul class="dropdown-menu bullet pull-right scrollable-menu" aria-labelledby="dropdownMenu1">
+                    <% @updates = Update.where(read: false) %>
+                    <% @updates.reverse.each do |update|  %>
                     
-                      <li> <%= @update.content %> </li>
-                    
+                      <li class="dropdown-item"> <%= link_to "#{update.content}", update_path(update.id) %> </li>
+                    <% end %>
+                    <li class="dropdown=item"> <%= link_to "View all notifications", updates_path %></li>
                   </ul>
 
               </div>

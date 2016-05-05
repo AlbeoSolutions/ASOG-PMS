@@ -41,6 +41,11 @@
   padding-top: 10px;
 }
 
+.scrollable-menu {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
+}
 
 /***************************************
  * CUSTOM CSS FOR SIDE-BAR AND NAV BAR *
