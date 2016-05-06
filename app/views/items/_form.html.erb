@@ -1,20 +1,23 @@
-<%= simple_form_for @item, url: @path, method: @method do |f| %>
-  <%= f.error_notification %>
+<div class="form-wrapper">
+  <%= simple_form_for @item, url: @path, method: @method do |f| %>
+    <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <div class="row">
-      <div class="col-md-6">
-        <%= f.input :item_title %>
+    <div class="form-inputs">
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.input :item_title %>
+        </div>
+        <div class="col-md-6">
+          <%= f.input :budget %>
+        </div>
       </div>
-      <div class="col-md-6">
-        <%= f.input :budget %>
-      </div>
+
+      <%= f.hidden_field  :project_id, :value => params[:project_id] %>
     </div>
 
-    <%= f.hidden_field  :project_id, :value => params[:project_id] %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, class: "btn btn-primary" %>
-  </div>
-<% end %>
+    <div class="form-actions">
+      <%= link_to 'Back', project_items_path(:project_id => params[:project_id]), class: "btn btn-danger" %>
+      <%= f.button :submit, class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

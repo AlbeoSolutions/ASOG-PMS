@@ -22,4 +22,5 @@ class Item < ActiveRecord::Base
   def to_s
     "#{self.item_title}"
   end
+
 end

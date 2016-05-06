@@ -13,7 +13,7 @@
 
   <%= link_to project_items_path(@project) do %>
     <div class="col-xs-3 project-active">
-       Expenditure
+       Financial Plan
     </div>
   <% end %>
 
@@ -30,7 +30,7 @@
   <p id="notice"><%= notice %></p>
 
   <div class="index-items">
-    <h3>Project Expenditures <%= link_to new_project_item_path(:project_id => params[:project_id]), class: "add-to" do %><span class="glyphicon glyphicon-plus"></span><% end %></h3>
+    <h3>Project Financial Plan <%= link_to new_project_item_path(:project_id => params[:project_id]), class: "add-to" do %><span class="glyphicon glyphicon-plus"></span><% end %></h3>
     <h4 class="project-heading"><%= @project.project_title%></h4><br>
     <table class="table">
       <thead>

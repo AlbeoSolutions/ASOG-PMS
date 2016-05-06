@@ -1,8 +1,8 @@
-<h1>Add to Work Plan</h1>
 
-<h2><%= @project.project_title %></h2>
+  <h1 class="form-head">Add Task to Work Plan</h1>
 
-<%= render 'form' %>
+  <h3 class="edit-from-project"><%= @project.project_title %></h3>
 
-<% @task.project_id = @project.id  %>
- <!-- <%= link_to 'Back', project_tasks_path %> -->
+  <%= render 'form' %>
+
+  <% @task.project_id = @project.id  %>
