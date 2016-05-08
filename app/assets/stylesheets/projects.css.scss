@@ -101,4 +101,54 @@
 
 .progress-report-row {
   margin-top: 25px;
+
+  h4 {
+    padding: 20px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+  }
+}
+
+.expenditure-per-item {
+  background: #fff;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+  padding:15px 5px 15px 5px;
+}
+
+.row-progtext {
+  margin-left: 1px !important;
+  margin-right: 1px !important;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+  background: #fff !important;
+
+  .progtext-heading {
+    font-weight: bold;
+  }
+
+  h5  {
+    font-size: 1.1em;
+  }
+
+}
+
+.graph-heading {
+  background-color: #1C3F94 !important;
+  color: #fff;
+}
+
+.row-progbar{
+  padding: 0 15px 0 15px;
+  margin-bottom: 12px;
+
+  .col-md-12 {
+    padding-top: 10px;
+    background: #fff;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+  }
+
+  h5 {
+    margin-top: 0px;
+    font-weight: bold;
+    font-size: 1em;
+  }
 }

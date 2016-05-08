@@ -34,6 +34,10 @@ class Project < ActiveRecord::Base
     (self.get_tasks_done.to_f / self.tasks.count.to_f)*100
   end
 
+  def get_items
+    self.items.map(&:item_title)
+  end
+
   def to_s
     "#{self.project_title}"
   end

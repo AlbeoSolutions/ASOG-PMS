@@ -17,4 +17,4 @@
 //= require_tree .
 //= require dropdowns-enhancement
 //= require tasks
-//= require chartkick
+//= require Chart

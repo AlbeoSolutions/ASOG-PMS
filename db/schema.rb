@@ -16,13 +16,12 @@ ActiveRecord::Schema.define(version: 20160504145504) do
   create_table "items", force: :cascade do |t|
     t.integer  "project_id",       limit: 4
     t.string   "item_title",       limit: 255
-    t.decimal  "budget",                         precision: 10
-    t.decimal  "amount_spent",                   precision: 10
-    t.decimal  "balance_left",                   precision: 10
-    t.decimal  "percentage_spent",               precision: 10
-    t.text     "comments",         limit: 65535
-    t.datetime "created_at",                                    null: false
-    t.datetime "updated_at",                                    null: false
+    t.float    "budget",           limit: 24
+    t.float    "amount_spent",     limit: 24,  default: 0.0
+    t.float    "balance_left",     limit: 24
+    t.float    "percentage_spent", limit: 24,  default: 0.0
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
   end
 
   add_index "items", ["project_id"], name: "index_items_on_project_id", using: :btree
@@ -41,22 +40,22 @@ ActiveRecord::Schema.define(version: 20160504145504) do
   end
 
   create_table "projects", force: :cascade do |t|
-    t.string   "project_title",            limit: 255
-    t.string   "project_acronym",          limit: 255
-    t.string   "project_director",         limit: 255
-    t.string   "funding_agency",           limit: 255
+    t.string   "project_title",                 limit: 255
+    t.string   "project_acronym",               limit: 255
+    t.string   "project_director",              limit: 255
+    t.string   "funding_agency",                limit: 255
     t.date     "start_date"
     t.date     "end_date"
-    t.decimal  "total_budget",                         precision: 10
-    t.decimal  "total_amount_spent",                   precision: 10
-    t.string   "account_number",           limit: 255
-    t.datetime "created_at",                                          null: false
-    t.datetime "updated_at",                                          null: false
-    t.integer  "kpa_cluster_id",           limit: 4
-    t.string   "summary_filename",         limit: 255
-    t.string   "brief_filename",           limit: 255
-    t.string   "project_summary_filename", limit: 255
-    t.string   "project_brief_filename",   limit: 255
+    t.float    "total_budget",                  limit: 24
+    t.float    "total_amount_spent",            limit: 24,  default: 0.0
+    t.float    "actual_expenditure_percentage", limit: 24,  default: 0.0
+    t.string   "account_number",                limit: 255
+    t.boolean  "isOngoing",                                 default: true
+    t.datetime "created_at",                                               null: false
+    t.datetime "updated_at",                                               null: false
+    t.integer  "kpa_cluster_id",                limit: 4
+    t.string   "project_summary_filename",      limit: 255
+    t.string   "project_brief_filename",        limit: 255
   end
 
   add_index "projects", ["kpa_cluster_id"], name: "index_projects_on_kpa_cluster_id", using: :btree
@@ -99,8 +98,9 @@ ActiveRecord::Schema.define(version: 20160504145504) do
     t.text     "description",       limit: 65535
     t.date     "due_date"
     t.date     "date_accomplished"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.boolean  "isFinished",                      default: false
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
   end
 
   add_index "tasks", ["project_id"], name: "index_tasks_on_project_id", using: :btree

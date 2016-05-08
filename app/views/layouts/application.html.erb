@@ -3,7 +3,6 @@
 <head>
   <title>ASOGPMS</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag "https://www.google.com/jsapi" %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
@@ -50,7 +49,7 @@
                   <% if updatescount > 0  %>
                     <span class="badge"> <%= updatescount %></span>
                     <% end %>
-                    
+
                 </div>
 
                   <ul class="dropdown-menu bullet pull-right scrollable-menu" aria-labelledby="dropdownMenu1">
@@ -60,7 +59,7 @@
                     <% updates.reverse.each do |update| %>
                       <li class="dropdown-item"> <%= link_to "#{update.content}",update_path(update.id) %> </li>
                     <% end %>
-                    
+
                     <% elsif current_staff.admin == false %>
                     <% @projects.each do |project| %>
                     <% @updates = Update.where(project_id: project.id) %>
@@ -70,7 +69,7 @@
                           <% else %>
                             <li class="dropdown-item"> <%= link_to "#{update.content}", update_path(update.id) %> </li>
                           <% end %>
-                      
+
                         <% end %>
                     <% end %>
                   <% end %>

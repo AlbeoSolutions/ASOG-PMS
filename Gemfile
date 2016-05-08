@@ -5,9 +5,7 @@ gem 'bootstrap-sass'
 gem 'simple_form'
 gem 'devise'
 gem 'carrierwave'
-gem 'chartkick'
-gem 'groupdate'
-
+gem 'chart-js-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'

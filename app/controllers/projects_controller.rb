@@ -5,6 +5,7 @@ class ProjectsController < ApplicationController
   # Custom Pages
   def progress
     @project = Project.find(params[:project_id])
+    @items = @project.items
   end
 
   # GET /projects
