@@ -2,10 +2,15 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_staff!
 
+  # Custom Pages
+  def progress
+    @project = Project.find(params[:project_id])
+  end
+
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all
+    @projects = Project.all.sort_by(&:updated_at).reverse
     @staff = current_staff
   end
 

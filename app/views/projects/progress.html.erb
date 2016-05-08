@@ -1,0 +1,80 @@
+<div class="row project-nav">
+  <%= link_to project_path(@project) do %>
+    <div class="col-xs-3">
+       Profile
+    </div>
+  <% end %>
+
+  <%= link_to project_tasks_path(@project) do %>
+    <div class="col-xs-3">
+       Work Plan
+    </div>
+  <% end %>
+
+  <%= link_to project_items_path(@project) do %>
+    <div class="col-xs-3">
+       Financial Plan
+    </div>
+  <% end %>
+
+  <%= link_to project_progress_path(@project) do %>
+    <div class="col-xs-3 project-active">
+       Progress
+    </div>
+  <% end %>
+</div>
+
+<div class="main-wrapper">
+
+  <h3>Progress Report</h3>
+  <h4 class="project-heading"><%= @project.project_title%></h4>
+  <span class="date-as-of"><%= "#{Date.today.strftime('%b' +" " +'%d' +", "+ '%Y')}"%></span>
+
+  <div class="row progress-report-row">
+    <div class="col-md-3 item-info">
+      <h4>Budget:
+        <%= @project.total_budget %>
+      </h4>
+    </div>
+    <div class="col-md-3 workplan-info">
+      <h4>Budget spent:
+        <%= @project.total_amount_spent %>
+      </h4>
+    </div>
+    <div class="col-md-3 workplan-info">
+      <h4> Budget left:
+        <%= @project.total_budget - @project.total_amount_spent %>
+      </h4>
+    </div>
+  </div><br>
+
+<p>
+  Tasks done
+</p>
+  <div class="progress">
+    <div class="progress-bar progress-bar-striped active progress-percentage-spent" role="progressbar"
+    aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: <%= @project.get_task_percentage_done %>%;">
+      <%= @project.get_tasks_done %>/<%= @project.tasks.count %>
+    </div>
+  </div>
+
+<p>
+  Expenditure %
+</p>
+  <div class="progress">
+    <div class="progress-bar progress-bar-striped active progress-percentage-spent" role="progressbar"
+    aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: <%= @project.actual_expenditure_percentage %>%;">
+      <%= @project.actual_expenditure_percentage %>%
+    </div>
+  </div>
+
+
+<%= line_chart @project.items.map { |item|
+    {name: item.item_title, data: item.records.group_by_day(:created_at).count }
+} %>
+
+
+
+
+
+</div>

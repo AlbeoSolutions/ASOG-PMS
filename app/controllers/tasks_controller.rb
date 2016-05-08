@@ -7,7 +7,6 @@ class TasksController < ApplicationController
   def index
     @project = Project.find(params[:project_id])
     @tasks = Task.all
-
     @sort = @project.tasks.sort_by &:due_date
   end
 
@@ -21,11 +20,15 @@ class TasksController < ApplicationController
   def new
     @project = Project.find(params[:project_id])
     @task = @project.tasks.build
+    @path = project_tasks_path(@project, @item)
+    @method = :post
   end
 
   # GET /tasks/1/edit
   def edit
     @project = Project.find(params[:project_id])
+    @path = project_task_path(@project, @task)
+    @method = :patch
   end
 
   # POST /tasks
@@ -49,7 +52,7 @@ class TasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to @task, notice: 'Task was successfully updated.' }
+        format.html { redirect_to project_task_path(:id => @task.id, :project_id => params[:project_id]), notice: 'Task was successfully updated.' }
         format.json { render :show, status: :ok, location: @task }
       else
         format.html { render :edit }

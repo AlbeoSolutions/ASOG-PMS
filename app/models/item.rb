@@ -4,8 +4,13 @@ class Item < ActiveRecord::Base
 
   #Callbacks
   before_create :set_balance_left_attribute
-  before_update :update_balance, if: :amount_spent_changed?
-  before_update :update_percentage, if: :amount_spent_changed?
+
+  before_save :update_balance, if: :amount_spent_changed?
+  before_save :update_percentage, if: :amount_spent_changed?
+
+  before_update :update_balance, if: :budget_changed?
+  before_update :update_percentage, if: :budget_changed?
+
 
   def set_balance_left_attribute
     self.balance_left = budget

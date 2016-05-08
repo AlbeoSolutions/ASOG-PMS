@@ -1,34 +1,56 @@
-<p id="notice"><%= notice %></p>
+<div class="row project-nav">
+  <%= link_to project_path(@project) do %>
+    <div class="col-xs-3">
+       Profile
+    </div>
+  <% end %>
 
-<p>
-  <strong>Task title:</strong>
-  <%= @task.task_title %>
-</p>
+  <%= link_to project_tasks_path(@project) do %>
+    <div class="col-xs-3 project-active">
+       Work Plan
+    </div>
+  <% end %>
 
-<p>
-  <strong>Description:</strong>
-  <%= @task.description %>
-</p>
+  <%= link_to project_items_path(@project) do %>
+    <div class="col-xs-3">
+       Financial Plan
+    </div>
+  <% end %>
 
-<p>
-  <strong>Due date:</strong>
-  <%= @task.due_date %>
-</p>
+  <%= link_to project_progress_path(@project) do %>
+    <div class="col-xs-3">
+       Progress
+    </div>
+  <% end %>
+</div>
 
-<p>
-  <strong>Date accomplished:</strong>
-  <%= @task.date_accomplished %>
-</p>
+<div class="main-wrapper">
+  <p id="notice"><%= notice %></p>
 
-<p>
-	<strong>Project ID</strong>
-	<%= @project.id %>
-</p>
+  <h3><%= @project.project_title %></h3>
+  <h4 class="project-heading">Task: <%= @task.task_title %></h4><br>
 
-<p>
-	<strong>Project Title:</strong>
-	<%= @project.project_title %>
-</p>
+  <div class="row task-dates">
+    <div class="col-md-2">
+      <p><strong>Due date:</strong></p>
+      <%= @task.due_date.strftime('%b' +" " +'%d' +", "+ '%Y') %>
+    </div>
+    <div class="col-md-3">
+      <p><strong>Date accomplished:</strong></p>
+      <%= @task.date_accomplished %>
+    </div>
+  </div>
 
-<%= link_to 'Edit', edit_project_task_path(:id => @task.id, :project_id => params[:project_id]) %> |
-<%= link_to 'Back', project_tasks_path(:project_id => params[:project_id]) %>
+
+  <p>
+    <strong>Description:</strong>
+  </p>
+
+  <p class="description-paragraph">
+    <%= @task.description %>
+  </p>
+
+
+  <%= link_to 'Edit', edit_project_task_path(:id => @task.id, :project_id => params[:project_id]) %> |
+  <%= link_to 'Back', project_tasks_path(:project_id => params[:project_id]) %>
+</div>

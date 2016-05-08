@@ -1,8 +1,38 @@
+<div class="row project-nav">
+  <%= link_to project_path(@project) do %>
+    <div class="col-xs-3">
+       Profile
+    </div>
+  <% end %>
+
+  <%= link_to project_tasks_path(@project) do %>
+    <div class="col-xs-3">
+       Work Plan
+    </div>
+  <% end %>
+
+  <%= link_to project_items_path(@project) do %>
+    <div class="col-xs-3 project-active">
+       Financial Plan
+    </div>
+  <% end %>
+
+  <%= link_to project_progress_path(@project) do %>
+    <div class="col-xs-3">
+       Progress
+    </div>
+  <% end %>
+</div>
+
+
+
+
 <div class="main-wrapper">
   <p id="notice"><%= notice %></p>
 
-  <h1 class="item-head">Item: <%= @item.item_title %></h1>
-  <h3 class="text-center"><%= @project%></h3><br>
+  <h3 class=""><%= @project%></h3>
+  <h4 class="project-heading">Item: <%= @item.item_title %></h4><br>
+
 
 
   <div class="row">
@@ -44,7 +74,7 @@
       <tbody>
         <%@item.records.each do |record| %>
         <td class="text-right"> <%= record.expenditure %> </td>
-        <td class="text-center"><%= record.created_at %> </td>
+        <td class="text-center"><%= record.created_at.strftime('%b' +" " +'%d' +", "+ '%Y') %> </td>
       </tbody>
         <% end %>
     </table>

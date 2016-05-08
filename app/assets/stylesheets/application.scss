@@ -14,6 +14,19 @@ body {
 
 .table {
 	background: #fff;
+
+	a {
+		color: grey;
+	}
+
+	a:hover {
+		background-color: transparent;
+		color: #1C3F94;
+	}
+
+	a:link {
+		color: grey;
+	}
 }
 
 
@@ -214,6 +227,7 @@ body {
 	text-align: center;
 	background: #fff;
 	width: 100%;
+	margin-left: 0px;
 
 	div {
 		padding-top: 5px;

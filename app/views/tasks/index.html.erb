@@ -17,7 +17,7 @@
     </div>
   <% end %>
 
-  <%= link_to project_tasks_path(@project) do %>
+  <%= link_to project_progress_path(@project) do %>
     <div class="col-xs-3">
        Progress
     </div>
@@ -28,7 +28,13 @@
   <p id="notice"><%= notice %></p>
 
   <div class="index-tasks">
-    <h3>Project Work plan <%= link_to new_project_task_path(:project_id => params[:project_id]), class: "add-to" do %> <span class="glyphicon glyphicon-plus"></span><%end%></h3>
+    <h3>Project Work plan
+      <% if current_staff.admin? %>
+        <%= link_to new_project_task_path(:project_id => params[:project_id]), class: "add-to" do %>
+          <span class="glyphicon glyphicon-plus"></span>
+        <% end %>
+      <% end %>
+    </h3>
     <h4 class="project-heading"><%= @project.project_title%></h4><br>
 
 
@@ -64,8 +70,14 @@
           <th>Task title</th>
           <th>Description</th>
           <th>Due date</th>
-          <th>Date accomplished</th>
-          <th colspan="3"></th>
+          <th>Status</th>
+          <% if current_staff.admin? %>
+            <th colspan="3" class="text-center"> Options </th>
+          <% else %>
+            <th class="text-center">
+               Finish Deliberable
+            </th>
+          <% end %>
         </tr>
       </thead>
 
@@ -74,11 +86,36 @@
             <tr>
               <td><%= task.task_title %></td>
               <td><%= task.description %></td>
-              <td><%= task.due_date %></td>
-              <td><%= task.date_accomplished %></td>
-              <td><%= link_to 'Show', project_task_path(:id => task.id, :project_id => params[:project_id]) %></td>
-              <td><%= link_to 'Edit', edit_project_task_path(:id => task.id, :project_id => params[:project_id]) %></td>
-              <td><%= link_to 'Destroy', project_task_path(:id => task.id, :project_id => params[:project_id]), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td><%= task.due_date.strftime('%b' +" " +'%d' +", "+ '%Y') %></td>
+
+                <% if task.isFinished %>
+                  <td style="color: green;"> Complete </td>
+                <% else %>
+                  <td style="color: #d9534f;"> Incomplete </td>
+                <% end %>
+
+              <% if current_staff.admin? %>
+                <td class="text-center"><%= link_to project_task_path(:id => task.id, :project_id => params[:project_id]) do %>
+                  <span class="glyphicon glyphicon-file"></span>
+                  <% end %>
+                </td>
+
+                <td class="text-center"><%= link_to edit_project_task_path(:id => task.id, :project_id => params[:project_id]) do %>
+                  <span class="glyphicon glyphicon-cog"></span>
+                  <% end %>
+                </td>
+                <td class="text-center"><%= link_to project_task_path(:id => task.id, :project_id => params[:project_id]), method: :delete, data: { confirm: 'Are you sure?' } do %>
+                  <span class="glyphicon glyphicon-remove"></span>
+                  <% end %>
+              <% else %>
+                <td class="text-center"><%= link_to edit_project_task_path(:id => task.id, :project_id => params[:project_id]) do %>
+                  <span class="glyphicon glyphicon-ok"></span>
+                  <% end %>
+                </td>
+              <% end %>
+
+
+              </td>
             </tr>
         <% end %>
       </tbody>
@@ -104,23 +141,23 @@
         <div class="timeline-panel">
           <div class="timeline-heading">
             <h4 class="timeline-title"><%= task.task_title %></h4>
-            <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> <%= task.due_date %></small></p>
+            <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> <%= task.due_date.strftime('%b' +" " +'%d' +", "+ '%Y') %></small></p>
           </div>
           <div class="timeline-body">
             <p><%= task.description %></p>
-            <hr>
-            <div class="btn-group">
-              <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
-                <i class="glyphicon glyphicon-cog"></i> <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu" role="menu">
-                <li><%= link_to 'Show', project_task_path(:id => task.id, :project_id => params[:project_id]) %></li>
-                <li><%= link_to 'Edit', edit_project_task_path(:id => task.id, :project_id => params[:project_id]) %></li>
-                <li><%= link_to 'Destroy', project_task_path(:id => task.id, :project_id => params[:project_id]), method: :delete, data: { confirm: 'Are you sure?' } %></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-              </ul>
-            </div>
+            <% if current_staff.admin? %>
+              <hr>
+              <div class="btn-group">
+                <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
+                  <i class="glyphicon glyphicon-cog"></i> <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                  <li><%= link_to 'Task details', project_task_path(:id => task.id, :project_id => params[:project_id]) %></li>
+                  <li><%= link_to 'Edit task', edit_project_task_path(:id => task.id, :project_id => params[:project_id]) %></li>
+                  <li><%= link_to 'Delete task', project_task_path(:id => task.id, :project_id => params[:project_id]), method: :delete, data: { confirm: 'Are you sure?' } %></li>
+                </ul>
+              </div>
+            <% end %>
           </div>
         </div>
       </li>

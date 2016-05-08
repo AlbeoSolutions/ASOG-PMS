@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   get 'pages/index'
 
   # resources :projects
@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       root to: 'projects#index'
 
       resources :projects do
+        get :progress
         resources :tasks
         resources :items do
           resources :records

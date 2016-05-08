@@ -1,6 +1,5 @@
-
 <div class="form-wrapper">
-  <%= simple_form_for @task, url: project_tasks_path(@project), method: :post do |f| %>
+  <%= simple_form_for @task, url: @path, method: @method do |f| %>
     <%= f.error_notification %>
 
     <div class="form-inputs">

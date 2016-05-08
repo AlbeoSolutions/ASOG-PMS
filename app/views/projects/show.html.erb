@@ -17,7 +17,7 @@
     </div>
   <% end %>
 
-  <%= link_to project_tasks_path(@project) do %>
+  <%= link_to project_progress_path(@project) do %>
     <div class="col-xs-3">
        Progress
     </div>
@@ -45,12 +45,12 @@
 
     <tr>
       <th class="table-heading"> Start Date </th>
-      <td> <%= @project.start_date %> </td>
+      <td> <%= @project.start_date.strftime('%b' +" " +'%d' +", "+ '%Y') %> </td>
     </tr>
 
     <tr>
       <th class="table-heading"> End Date </th>
-      <td> <%= @project.end_date %> </td>
+      <td> <%= @project.end_date.strftime('%b' +" " +'%d' +", "+ '%Y') %> </td>
     </tr>
 
     <tr>
@@ -59,15 +59,32 @@
     </tr>
   </table>
 
+
   <%= link_to "Download Project Summary", @project.project_summary_filename_url, class: "btn download-btn" %>
+
+
   <%= link_to "Download Project Brief", @project.project_brief_filename_url, class: "btn download-btn" %>
 
 
+  <div class="row staff-row">
+    <h4> Project staff:</h4>
+    <div class="col-md-6 project-staff">
+      <% @project.staffs.each do |staff| %>
+      <div class="row">
+        <div class="col-md-6">
+          <h4> <%= staff.to_s %> </h4>
+        </div>
 
-  <h5>Staff</h5>
-  <% @project.staffs.each do |staff| %>
-  <p>
-    <%= staff.first_name %>
-  </p>
-  <% end %>
+        <div class="col-md-6">
+          <h6>Contract expiration: <%= staff.contract_expiration_date %></h6>
+        </div>
+      </div>
+
+      <% end %>
+    </div>
+  </div>
+
+
+  <!-- <h1> Total amount spent: <%= @project.total_amount_spent %></h1>
+  <h1> Project expenditure percentage: <%= @project.actual_expenditure_percentage %></h1> -->
 </div>

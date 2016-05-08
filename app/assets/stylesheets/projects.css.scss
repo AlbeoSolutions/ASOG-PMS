@@ -75,3 +75,30 @@
   background: #1C3F94;
   color: white !important;
 }
+
+.staff-row {
+  margin-top: 20px;
+
+  .row {
+    border-bottom: 1px solid #eee;
+  }
+}
+
+.project-staff {
+  overflow-y: scroll;
+  height: 160px;
+  background: #fff;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+}
+
+
+// PROGRESS REPORT STYLING
+
+.date-as-of {
+  font-weight: lighter;
+  font-size: .1.5em;
+}
+
+.progress-report-row {
+  margin-top: 25px;
+}
