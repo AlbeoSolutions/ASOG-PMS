@@ -24,7 +24,61 @@
         <div id="navbar" class="navbar-collapse collapse">
           <% if staff_signed_in? %>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Notifications</a></li>
+            <li>
+              <% @jobs = Job.where(staff_id: current_staff.id)  %>
+                    <% id = Array.new  %>
+                    <%  @jobs.each do |job| %>
+                    <%  project = job.project %>
+                    <% b = project.id %>
+                      <% id.push(b) %>
+                    <% end %>
+                    <% @projects = Array.new  %>
+                    <% id.each do |i|  %>
+                    <% project = Project.find(i)  %>
+                    <% @projects.push(project)  %>
+                    <% end %>
+                    <% updatescount = 0  %>
+                    <% @projects.each do |project|  %>
+                        <% updates = Update.where(project_id: project.id, read: false) %>
+                        <% updates.each do%>
+                          <% updatescount = updatescount + 1 %>
+                        <% end %>
+                    <% end %>
+              <div class="dropdown" id="user-menu">
+                <div class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  Notifications
+                  <% if updatescount > 0  %>
+                    <span class="badge"> <%= updatescount %></span>
+                    <% end %>
+                    
+                </div>
+
+                  <ul class="dropdown-menu bullet pull-right scrollable-menu" aria-labelledby="dropdownMenu1">
+                    <li class="dropdown-item"> <strong><%= link_to "View all notifications", updates_path %></strong></li>
+                    <% if current_staff.admin == true %>
+                    <% updates = Update.all  %>
+                    <% updates.reverse.each do |update| %>
+                      <li class="dropdown-item"> <%= link_to "#{update.content}",update_path(update.id) %> </li>
+                    <% end %>
+                    
+                    <% elsif current_staff.admin == false %>
+                    <% @projects.each do |project| %>
+                    <% @updates = Update.where(project_id: project.id) %>
+                        <% @updates.reverse.each do |update| %>
+                          <% if update.read = false %>
+                            <li class="dropdown-item"><strong><%= link_to "#{update.content}", update_path(update.id) %> </strong> </li>
+                          <% else %>
+                            <li class="dropdown-item"> <%= link_to "#{update.content}", update_path(update.id) %> </li>
+                          <% end %>
+                      
+                        <% end %>
+                    <% end %>
+                  <% end %>
+
+                  </ul>
+
+              </div>
+            </li>
             <li id="user-icon">
               <div class="dropdown" id="user-menu">
                 <div class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">

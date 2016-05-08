@@ -1,0 +1,13 @@
+<h1> View all notifications </h1>
+
+
+<% @projects.each do |project| %>
+	<% @updates = Update.where(project_id: project.id) %>
+	<% @updates.reverse.each do |update| %>
+		<p> <strong><%= update.project.project_title %></strong></p>
+		<p><%= update.created_at.strftime('%B' +" " +'%C' +", "+ '%Y' + " " + '%R') %>
+		</p>
+		<p><%= update.content %></p>
+		
+	<% end %>
+<% end %>

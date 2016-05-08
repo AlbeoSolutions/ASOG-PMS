@@ -4,6 +4,7 @@ class Project < ActiveRecord::Base
   has_many :tasks
   has_many :items
   has_many :staffs, through: :jobs
+  has_many :updates
 
   belongs_to :kpa_cluster
 
