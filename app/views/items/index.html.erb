@@ -69,7 +69,7 @@
               <span class="glyphicon glyphicon-cog"></span>
               <% end %>
             </td>
-            <td class="text-center"><%= link_to project_item_path(:id => item.id, :project_id => params[:project_id]), method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <td class="text-center"><%= link_to project_item_path(:id => item.id, :project_id => params[:project_id]), method: :delete, data: { confirm: "Are you sure you want to delete #{item.item_title} ?" } do %>
               <span class="glyphicon glyphicon-remove"></span>
               <% end %>
             </td>
