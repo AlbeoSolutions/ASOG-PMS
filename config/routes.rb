@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   get 'pages/index'
 
+  get 'pages/error' 
+
   resources :updates
 
   # resources :projects

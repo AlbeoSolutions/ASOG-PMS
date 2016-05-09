@@ -76,7 +76,7 @@
         <%@item.records.each do |record| %>
         <td class="text-right"> <%= record.expenditure %> </td>
         <td class="text-center"><%= record.created_at.strftime('%b' +" " +'%d' +", "+ '%Y') %> </td>
-        <td class="text-center"> <%= link_to "See support document", record.document_url %> </td>
+        <td class="text-center"> <%= link_to record.document_url do %><span class="glyphicon glyphicon-file"></span> <% end %> </td>
       </tbody>
         <% end %>
     </table>
