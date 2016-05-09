@@ -55,14 +55,14 @@
                   <ul class="dropdown-menu bullet pull-right scrollable-menu" aria-labelledby="dropdownMenu1">
                     <li class="dropdown-item"> <strong><%= link_to "View all notifications", updates_path %></strong></li>
                     <% if current_staff.admin == true %>
-                    <% updates = Update.all  %>
+                    <% updates = Update.last(20)  %>
                     <% updates.reverse.each do |update| %>
                       <li class="dropdown-item"> <%= link_to "#{update.content}",update_path(update.id) %> </li>
                     <% end %>
 
                     <% elsif current_staff.admin == false %>
                     <% @projects.each do |project| %>
-                    <% @updates = Update.where(project_id: project.id) %>
+                    <% @updates = Update.where(project_id: project.id).last(10) %>
                         <% @updates.reverse.each do |update| %>
                           <% if update.read = false %>
                             <li class="dropdown-item"><strong><%= link_to "#{update.content}", update_path(update.id) %> </strong> </li>
