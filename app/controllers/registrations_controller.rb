@@ -10,8 +10,9 @@ class RegistrationsController < Devise::RegistrationsController
       render 'new'
     end
   end
+  
   def create
-    
+
       build_resource(sign_up_params)
 
       resource.save
@@ -29,8 +30,8 @@ class RegistrationsController < Devise::RegistrationsController
         clean_up_passwords resource
         set_minimum_password_length
         respond_with resource
-    
-    
+
+
   end
   end
 
