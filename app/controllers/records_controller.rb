@@ -30,19 +30,26 @@ class RecordsController < ApplicationController
   def create
     @record = Record.new(record_params)
     @item = Item.find(params[:item_id])
-
+    @project = Project.find(params[:project_id])
     respond_to do |format|
-      if @record.save
-        format.html { redirect_to project_item_path(params[:project_id], params[:item_id]), notice: 'Record was successfully created.' }
-        format.json { render :show, status: :created, location: @record }
-        expenditure = @record.expenditure
-        title = @item.item_title
-        @update = Update.create(content: " #{expenditure} has been spent on #{title}.", read: false, project_id: params[:project_id])
-        @value = @item.amount_spent + @record.expenditure
-        @item.update(amount_spent: @value)
+      
+      if (@item.balance_left - @record.expenditure) >= 0
+        if @record.save
+          format.html { redirect_to project_item_path(params[:project_id], params[:item_id]), notice: 'Record was successfully created.' }
+          format.json { render :show, status: :created, location: @record }
+          expenditure = @record.expenditure
+          title = @item.item_title
+          @update = Update.create(content: " #{expenditure} has been spent on #{title}.", read: false, project_id: params[:project_id])
+          @value = @item.amount_spent + @record.expenditure
+          @item.update(amount_spent: @value)
+        else
+          format.html { render :new }
+          format.json { render json: @record.errors, status: :unprocessable_entity }
+        end
       else
-        format.html { render :new }
-        format.json { render json: @record.errors, status: :unprocessable_entity }
+        format.html { render :new, notice: 'Amount spent cannot exceed balance left.' }
+          format.json { render json: @record.errors, status: :unprocessable_entity }
+        
       end
     end
   end
