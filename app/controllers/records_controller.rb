@@ -32,7 +32,7 @@ class RecordsController < ApplicationController
     @item = Item.find(params[:item_id])
     @project = Project.find(params[:project_id])
     respond_to do |format|
-      
+
       if (@item.balance_left - @record.expenditure) >= 0
         if @record.save
           format.html { redirect_to project_item_path(params[:project_id], params[:item_id]), notice: 'Record was successfully created.' }
@@ -48,8 +48,7 @@ class RecordsController < ApplicationController
         end
       else
         format.html { render :new, notice: 'Amount spent cannot exceed balance left.' }
-          format.json { render json: @record.errors, status: :unprocessable_entity }
-        
+          format.json { render json: @record.errors, status: :unprocessable_entity }      
       end
     end
   end

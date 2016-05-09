@@ -1,0 +1,10 @@
+<div class="main-wrapper">
+
+  <h1>Staff options</h1>
+
+  <% @staffs.each do |staff| %>
+    <h5> <%= staff %> </h5>
+    <h6> <%= link_to "Cancel my account", staff_registration_path(staff), :confirm => "Are you sure?", :method => :delete %> </h6>
+  <% end  %>
+
+</div>

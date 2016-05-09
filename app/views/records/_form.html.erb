@@ -7,11 +7,12 @@
     <%= f.input :comments %>
     <%= f.label :document,label: "Upload Supporting Document/s" %>
     <%= f.file_field :document %>
+    <br>
     <%= f.hidden_field  :item_id, :value => params[:item_id] %>
   </div>
 
   <div class="form-actions">
-    <%= link_to 'Back', project_item_records_path, class: "btn btn-danger" %>
+    <%= link_to 'Back', project_item_path(:id => params[:item_id], :project_id => params[:project_id]), class: "btn btn-danger" %>
     <%= f.button :submit, class: "btn btn-primary" %>
   </div>
 <% end %>

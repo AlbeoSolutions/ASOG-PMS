@@ -65,7 +65,7 @@
 
   <%= link_to "Download Project Brief", @project.project_brief_filename_url, class: "btn download-btn" %>
 
-
+<% if current_staff.admin? %>
   <div class="row staff-row">
     <h4> Project staff:</h4>
     <div class="col-md-6 project-staff">
@@ -76,14 +76,14 @@
         </div>
 
         <div class="col-md-6">
-          <h6>Contract expiration: <%= staff.contract_expiration_date %></h6>
+          <h6>Contract expiration: <%= staff.contract_expiration_date.strftime('%b' +" " +'%d' +", "+ '%Y') %></h6>
         </div>
       </div>
 
       <% end %>
     </div>
   </div>
-
+<% end %>
 
   <!-- <h1> Total amount spent: <%= @project.total_amount_spent %></h1>
   <h1> Project expenditure percentage: <%= @project.actual_expenditure_percentage %></h1> -->

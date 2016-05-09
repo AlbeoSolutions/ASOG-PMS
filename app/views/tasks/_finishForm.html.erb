@@ -1,0 +1,41 @@
+<div class="main-wrapper">
+  <p id="notice"><%= notice %></p>
+
+  <h3><%= @project.project_title %></h3>
+  <h4 class="project-heading">Task: <%= @task.task_title %></h4><br>
+
+  <div class="row task-dates">
+    <div class="col-md-2">
+      <p><strong>Due date:</strong></p>
+      <%= @task.due_date.strftime('%b' +" " +'%d' +", "+ '%Y') %>
+    </div>
+  </div>
+
+  <p>
+    <strong>Description:</strong>
+  </p>
+
+  <p class="description-paragraph">
+    <%= @task.description %>
+  </p>
+
+
+    <%= simple_form_for @task, url: @path, method: @method do |f| %>
+      <%= f.error_notification %>
+
+      <div class="form-inputs">
+        <%= f.hidden_field  :project_id, :value => params[:project_id] %>
+        <%= f.hidden_field :isFinished, :value => true %>
+        <%= f.hidden_field :date_accomplished, :value => Date.today %>
+      </div>
+  <br>
+      <div class="form-actions">
+         <%= link_to 'Back', project_tasks_path, class: "btn btn-danger theF" %>
+         <%= f.submit "Finish task", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+
+
+
+
+</div>

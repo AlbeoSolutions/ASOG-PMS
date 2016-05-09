@@ -102,11 +102,9 @@
     <div class="container-fluid body">
       <div class="row">
 
-<% if staff_signed_in? && current_staff.admin %>
+<% if staff_signed_in? %>
 <!-- Start of Side-bar -->
         <div class="col-sm-3 col-md-2 sidebar">
-
-
 
           <ul class="nav nav-sidebar">
             <!-- <li class="active"><a href="#">All Projects<span class="sr-only">(current)</span></a></li> -->
@@ -115,6 +113,7 @@
           </ul>
 
           <ul class="nav nav-sidebar">
+            <li><a href="">All staff</a></li>
             <li><%= link_to new_staff_registration_path do %> <span class="glyphicon glyphicon-user"></span> Add new staff  <% end %></li>
             <li><a href="">Add New Admin</a></li>
             <li><a href="">Disable User</a></li>

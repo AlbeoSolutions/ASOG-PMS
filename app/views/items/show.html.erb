@@ -30,7 +30,11 @@
 <div class="main-wrapper">
   <p id="notice"><%= notice %></p>
 
-  <h3 class=""><%= @project%></h3>
+  <h3 class=""><%= @project%>
+    <%= link_to new_project_item_record_path(@project.id, @item.id), class: "add-to" do %>
+      <span class="glyphicon glyphicon-plus"></span>
+    <% end %>
+  </h3>
   <h4 class="project-heading">Item: <%= @item.item_title %></h4><br>
 
 
@@ -82,14 +86,5 @@
     </table>
 
     </p>
-
-
-
-
-
-  <%= link_to 'Edit', edit_project_item_path(:id => @item.id, :project_id => params[:project_id]) %> |
-  <%= link_to 'Back', project_items_path(:project_id => params[:project_id]) %>
-
-  <%= link_to 'New record', new_project_item_record_path(@project.id, @item.id) %>
 
 </div>

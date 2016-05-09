@@ -108,10 +108,17 @@
                   <span class="glyphicon glyphicon-remove"></span>
                   <% end %>
               <% else %>
-                <td class="text-center"><%= link_to edit_project_task_path(:id => task.id, :project_id => params[:project_id]) do %>
-                  <span class="glyphicon glyphicon-ok"></span>
+                <% if task.isFinished == true %>
+                  <td class="text-center"><%= link_to project_task_path(:id => task.id, :project_id => params[:project_id]) do %>
+                      <span class="glyphicon glyphicon-ok" style="color: green;"></span>
                   <% end %>
-                </td>
+                  </td>
+                <% else %>
+                  <td class="text-center"><%= link_to edit_project_task_path(:id => task.id, :project_id => params[:project_id]) do %>
+                    <span class="glyphicon glyphicon-ok"></span>
+                    <% end %>
+                  </td>
+                <% end %>
               <% end %>
 
 
@@ -137,7 +144,12 @@
       <% else %>
       <li class="timeline-inverted">
       <%end%>
+      <% if task.isFinished == true %>
+        <div class="timeline-badge success"><i class="glyphicon glyphicon-ok-circle"></i></div>
+      <% else %>
         <div class="timeline-badge danger"><i class="glyphicon glyphicon-remove-sign"></i></div>
+      <% end %>
+
         <div class="timeline-panel">
           <div class="timeline-heading">
             <h4 class="timeline-title"><%= task.task_title %></h4>

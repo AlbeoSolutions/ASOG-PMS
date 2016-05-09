@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   get 'pages/index'
 
-  get 'pages/error' 
+  get 'pages/error'
 
   resources :updates
 
@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   devise_scope :staff do
     authenticated  do
       root to: 'projects#index'
+
+      get 'pages/staffoptions'
 
       resources :projects do
         get :progress

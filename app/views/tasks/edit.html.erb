@@ -1,3 +1,6 @@
-<h1 class="form-head">Edit Task Details</h1>
-
-<%= render 'form' %>
+<% if current_staff.admin? %>
+  <h1 class="form-head">Edit Task Details</h1>
+  <%= render 'form' %>
+<% else %>
+  <%= render 'finishForm'%>
+<% end  %>

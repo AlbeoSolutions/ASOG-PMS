@@ -49,8 +49,8 @@
   <p class="description-paragraph">
     <%= @task.description %>
   </p>
+  <br>
 
 
-  <%= link_to 'Edit', edit_project_task_path(:id => @task.id, :project_id => params[:project_id]) %> |
-  <%= link_to 'Back', project_tasks_path(:project_id => params[:project_id]) %>
+  <%= link_to 'Back', project_tasks_path(:project_id => params[:project_id]), class: "btn btn-danger" %>
 </div>
