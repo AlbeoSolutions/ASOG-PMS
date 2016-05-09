@@ -4,6 +4,7 @@ class Record < ActiveRecord::Base
   after_save :update_item
   after_save :update_project_spent
 
+  mount_uploader :document, AttachmentUploader
 
   def update_item
     @theItem = Item.find(self.item_id)

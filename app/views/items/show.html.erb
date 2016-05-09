@@ -38,17 +38,17 @@
   <div class="row">
     <div class="col-md-3 workplan-info">
       <h4>Budget:
-        <span class=""> <%= @item.budget %> </span>
+        <span class=""> <%= number_with_delimiter(@item.budget, :delimiter => ",") %> </span>
       </h4>
     </div>
     <div class="col-md-3 workplan-info">
       <h4> Amount spent:
-        <span class=""> <%= @item.amount_spent %> </span>
+        <span class=""> <%= number_with_delimiter(@item.amount_spent, :delimiter => ",") %> </span>
       </h4>
     </div>
     <div class="col-md-3 workplan-info">
       <h4> Balance left:
-        <span> <%= @item.balance_left %> </span>
+        <span> <%= number_with_delimiter(@item.balance_left, :delimiter => ",") %> </span>
       </h4>
     </div>
   </div><br>
@@ -70,11 +70,13 @@
     <thead class="show-item-table">
       <th class="text-right">Amount Spent</th>
       <th class="text-center">Date</th>
+      <th class="text-center">Supporting Document</th>
     </thead>
       <tbody>
         <%@item.records.each do |record| %>
         <td class="text-right"> <%= record.expenditure %> </td>
         <td class="text-center"><%= record.created_at.strftime('%b' +" " +'%d' +", "+ '%Y') %> </td>
+        <td class="text-center"> <%= link_to "See support document", record.document_url %> </td>
       </tbody>
         <% end %>
     </table>

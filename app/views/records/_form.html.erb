@@ -5,6 +5,8 @@
   <div class="form-inputs">
     <%= f.input :expenditure %>
     <%= f.input :comments %>
+    <%= f.label :document,label: "Upload Supporting Document/s" %>
+    <%= f.file_field :document %>
     <%= f.hidden_field  :item_id, :value => params[:item_id] %>
   </div>
 
