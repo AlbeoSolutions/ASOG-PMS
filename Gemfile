@@ -6,6 +6,7 @@ gem 'simple_form'
 gem 'devise'
 gem 'carrierwave'
 gem 'chart-js-rails'
+gem 'cocoon'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'

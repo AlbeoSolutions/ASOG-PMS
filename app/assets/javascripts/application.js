@@ -18,3 +18,4 @@
 //= require dropdowns-enhancement
 //= require tasks
 //= require Chart
+//= require cocoon

@@ -13,8 +13,13 @@ class Project < ActiveRecord::Base
   accepts_nested_attributes_for :tasks
   accepts_nested_attributes_for :items
 
+  # Carrierwave
+
   mount_uploader :project_summary_filename, AttachmentUploader
   mount_uploader :project_brief_filename, AttachmentUploader
+
+
+  # Functions
 
   def update_actual_expenditure_percentage
     self.actual_expenditure_percentage = (self.total_amount_spent / self.total_budget) * 100
@@ -41,4 +46,5 @@ class Project < ActiveRecord::Base
   def to_s
     "#{self.project_title}"
   end
+  
 end
