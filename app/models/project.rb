@@ -55,6 +55,15 @@ class Project < ActiveRecord::Base
     taskCount
   end
 
+  def get_expiring_staff
+    self.staffs.each do |staff|
+      aMonth = Date.today - staff.contract_expiration_date
+      if aMonth < 30
+        staff
+      end
+    end
+  end
+
   def to_s
     "#{self.project_title}"
   end

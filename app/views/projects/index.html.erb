@@ -6,6 +6,7 @@
 
   <div class="row">
     <% @projects.each do |project| %>
+    <%= link_to project, class: "project-link" do %>
       <div class="col-md-6 box-container">
         <div class="project-box">
           <div class="row">
@@ -27,14 +28,16 @@
 
         </div>
       </div>
+      <% end %>
     <% end %>
   </div>
   <% else %>
 
-  <h1>Project assignments</h1><br>
+  <h1 class="project-heading">Project assignments</h1><br>
 
   <div class="row">
     <% @staff.projects.each do |project| %>
+    <%= link_to project, class: "project-link" do %>
       <div class="col-md-6 box-container">
         <div class="project-box">
           <div class="row">
@@ -56,6 +59,7 @@
 
         </div>
       </div>
+      <% end %>
     <% end %>
   </div>
   <% end %>

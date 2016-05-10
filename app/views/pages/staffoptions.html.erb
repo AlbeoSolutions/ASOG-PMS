@@ -1,10 +1,25 @@
 <div class="main-wrapper">
 
-  <h1>Staff options</h1>
+  <h1 class="project-heading">Manage staff accounts: </h1>
 
-  <% @staffs.each do |staff| %>
-    <h5> <%= staff %> </h5>
-    <h6> <%= link_to "Cancel my account", staff_registration_path(staff_id: staff), :confirm => "Are you sure?", :method => :delete %> </h6>
-  <% end  %>
+  <table class="table staff-table">
+    <thead>
+      <th> Staff name </th>
+      <th> Contract expiration Date</th>
+      <th> Options </th>
+    </thead>
+
+    <tbody>
+        <% @staffs.each do |staff| %>
+          <tr>
+            <td> <%= staff %> </td>
+            <td> <%= staff.contract_expiration_date.strftime('%b' +" " +'%d' +", "+ '%Y') %> </td>
+            <td> <%= link_to staff_registration_path(staff_id: staff), :confirm => "Are you sure?", :method => :delete do %>
+              <span class="glyphicon glyphicon-remove"></span>
+              <% end %>
+          </tr>
+        <% end %>
+    </tbody>
+  </table>
 
 </div>

@@ -3,6 +3,6 @@ class PagesController < ApplicationController
   end
 
   def staffoptions
-    @staffs = Staff.all
+    @staffs = Staff.all.sort_by &:contract_expiration_date
   end
 end

@@ -5,6 +5,10 @@
 @import 'dropdowns-enhancement';
 
 
+
+
+
+
 /* GENERAL STYLES */
 
 body {
@@ -35,6 +39,24 @@ body {
 
 
 /* NAVBAR STYLES */
+
+.nav-home {
+	padding-top: 19px !important;
+	color: #fff !important;
+	font-size: 1em !important;
+}
+
+.nav-notif {
+	color: #fff;
+	padding-top: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.nav-notif:hover,
+.nav-home:hover {
+	color: #bdbdbd !important;
+}
 
 .navbar {
 	background-color: #1C3F94;

@@ -40,3 +40,49 @@ pdf.table(items,
   t.row(0).background_color = '1C3F94'
   t.row(0).text_color = 'ffffff'
 end
+
+move_down 30
+
+text "Tasks:", :indent_paragraphs => 15, :size => 14
+
+move_down 10
+
+tasks = [
+  ["Total tasks finished: #{@project.tasks.where("isFinished = true").count}",
+    "Tasks remaining: #{ @project.tasks.where("isFinished = false").count}",
+    "Overdue tasks: #{@project.get_overdue_tasks}"
+  ]
+]
+
+pdf.table(tasks, :position => :center,
+:column_widths => [170, 170, 170],
+:cell_style => {
+  :borders => [:left, :top, :bottom, :right],
+  :border_width => 2,
+  :align => :center
+})
+
+move_down 30
+
+text "Staff whose contract expires within 30 days:", :indent_paragraphs => 15, :size => 14
+
+move_down 20
+
+staff = [["Staff name", "Contract expiration Date"]]
+staff += @project.get_expiring_staff.map do |staff|
+    [
+      "#{staff}",
+      "#{staff.contract_expiration_date.strftime('%b' +" " +'%d' +", "+ '%Y')}"
+    ]
+end
+
+pdf.table(staff, :position => :center,
+:column_widths => [190, 190],
+:cell_style => {
+  :borders => [:left, :top, :bottom, :right],
+  :border_width => 2,
+  :align => :center
+})do |t|
+t.row(0).background_color = '1C3F94'
+t.row(0).text_color = 'ffffff'
+end

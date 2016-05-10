@@ -38,24 +38,24 @@
   <h4 class="project-heading">Item: <%= @item.item_title %></h4><br>
 
 
-
-  <div class="row">
-    <div class="col-md-3 workplan-info">
+  <div class="row item-info-row">
+    <div class="col-md-4">
       <h4>Budget:
         <span class=""> <%= number_with_delimiter(@item.budget, :delimiter => ",") %> </span>
       </h4>
     </div>
-    <div class="col-md-3 workplan-info">
+    <div class="col-md-4">
       <h4> Amount spent:
         <span class=""> <%= number_with_delimiter(@item.amount_spent, :delimiter => ",") %> </span>
       </h4>
     </div>
-    <div class="col-md-3 workplan-info">
+    <div class="col-md-4">
       <h4> Balance left:
         <span> <%= number_with_delimiter(@item.balance_left, :delimiter => ",") %> </span>
       </h4>
     </div>
   </div><br>
+
   <p>
     <strong>Percentage spent:</strong>
 
