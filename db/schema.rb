@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160509014909) do
+ActiveRecord::Schema.define(version: 20160509220813) do
 
   create_table "items", force: :cascade do |t|
     t.integer  "project_id",       limit: 4
@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(version: 20160509014909) do
     t.boolean  "isFinished",                      default: false
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
+    t.string   "submission",        limit: 255
   end
 
   add_index "tasks", ["project_id"], name: "index_tasks_on_project_id", using: :btree
