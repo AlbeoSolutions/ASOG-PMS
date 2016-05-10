@@ -78,6 +78,14 @@
 
 .staff-row {
   margin-top: 20px;
+  padding: 10px;
+
+  h4 {
+    background: #1C3F94;
+    padding: 10px;
+    color: #fff;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  }
 
   .row {
     border-bottom: 1px solid #eee;

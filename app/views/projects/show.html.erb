@@ -68,11 +68,11 @@
 <% if current_staff.admin? %>
   <div class="row staff-row">
     <h4> Project staff:</h4>
-    <div class="col-md-6 project-staff">
+    <div class="col-md-12 project-staff">
       <% @project.staffs.each do |staff| %>
       <div class="row">
         <div class="col-md-6">
-          <h4> <%= staff.to_s %> </h4>
+          <h5> <%= staff.to_s %> </h5>
         </div>
 
         <div class="col-md-6">
