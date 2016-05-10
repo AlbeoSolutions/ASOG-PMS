@@ -83,15 +83,10 @@ body {
  * CUSTOM CSS FOR SIDE-BAR AND NAV BAR *
  **************************************/
 
-/*
- * Base structure
- */
-
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
   padding-top: 50px;
 }
-
 
 /*
  * Global add-ons
@@ -106,6 +101,7 @@ body {
  * Top navigation
  * Hide default border to remove 1px line.
  */
+ 
 .navbar-fixed-top {
   border: 0;
 }
@@ -115,9 +111,7 @@ body {
 	padding-top: 10px !important;
 }
 
-/*
- * Sidebar
- */
+/* SIDEBAR MAIN STYLING */
 
 /* Hide for mobile, show later */
 .sidebar {
@@ -143,7 +137,7 @@ body {
   }
 }
 
-/* Sidebar navigation */
+/* SIDEBAR NAVIGATION STYLES */
 
 .nav-sidebar {
   margin-right: -21px; /* 20px padding + 1px border */
@@ -161,9 +155,7 @@ body {
   background-color: #1C3F94;
 }
 
-/*
- * Main content
- */
+/* MAIN CONTENT GENERAL STYLES */
 
 .main {
   padding-bottom: 20px;
@@ -184,11 +176,6 @@ body {
 .main .page-header {
   margin-top: 0;
 }
-
-
-/*
- * Placeholder dashboard ideas
- */
 
 .placeholders {
   margin-bottom: 30px;
@@ -238,7 +225,7 @@ body {
 }
 
 
-/* PROJECT NAVIGATION */
+/* PROJECT NAVIGATION  STYLES */
 
 .project-nav {
 	margin-top: 1px;
@@ -261,7 +248,6 @@ body {
 
 	a:hover {
 		div {
-			// background: #1C3F94;
 			color: #1C3F94;
 			font-weight: bold;
 
@@ -271,7 +257,6 @@ body {
 
 
 .project-active {
-	// background: #1C3F94;
 	color: #1C3F94;
 	font-weight: bold;
 }
@@ -293,7 +278,7 @@ body {
 }
 
 
-/* FORM WRAPPER */
+/* FORM STYLES */
 
 .form-head {
 	font-weight: lighter;
@@ -317,8 +302,6 @@ body {
 .edit-from-project {
 	text-align: center;
 }
-
-
 
 .form-wrapper {
 	margin: 25px 60px 0px 60px;

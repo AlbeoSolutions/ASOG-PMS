@@ -1,26 +1,28 @@
 class Project < ActiveRecord::Base
+  # Validations
   validates_presence_of :project_title, :total_budget, :account_number
+
+  # Associations
   has_many :jobs
   has_many :tasks
   has_many :items
   has_many :staffs, through: :jobs
   has_many :updates
-
   belongs_to :kpa_cluster
 
+  # Callbacks
   before_save :update_actual_expenditure_percentage, if: :total_amount_spent_changed?
 
+  # Nested forms
   accepts_nested_attributes_for :tasks
   accepts_nested_attributes_for :items
 
   # Carrierwave
-
   mount_uploader :project_summary_filename, AttachmentUploader
   mount_uploader :project_brief_filename, AttachmentUploader
 
 
-  # Functions
-
+  # Methods
   def update_actual_expenditure_percentage
     self.actual_expenditure_percentage = (self.total_amount_spent / self.total_budget) * 100
   end
@@ -46,5 +48,5 @@ class Project < ActiveRecord::Base
   def to_s
     "#{self.project_title}"
   end
-  
+
 end

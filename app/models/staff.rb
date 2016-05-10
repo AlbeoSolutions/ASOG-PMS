@@ -4,14 +4,18 @@ class Staff < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates_presence_of :first_name, :last_name
+   # Validations
+   validates_presence_of :first_name, :last_name
 
+   # Associations
    has_many :jobs
    has_many :projects, through: :jobs
 
+   # Nested forms
    accepts_nested_attributes_for :projects
    accepts_nested_attributes_for :jobs
 
+   # Methods
    def to_s
      "#{self.first_name + " " + self.last_name }"
    end
