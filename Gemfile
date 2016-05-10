@@ -7,6 +7,9 @@ gem 'devise'
 gem 'carrierwave'
 gem 'chart-js-rails'
 gem 'cocoon'
+gem 'prawn'
+gem 'prawn-table'
+gem "prawnto_2", :require => "prawnto"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
