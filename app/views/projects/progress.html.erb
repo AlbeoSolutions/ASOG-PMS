@@ -115,6 +115,13 @@
           </div>
         </div>
 
+        <div class="row dl-row">
+          <%= link_to project_progress_path(@project, :format => 'pdf'), class: "PDF-DL" do %>
+            Download as PDF <span class="glyphicon glyphicon-download-alt"></span>
+          <% end %>
+        </div>
+
+
 
     </div>
 

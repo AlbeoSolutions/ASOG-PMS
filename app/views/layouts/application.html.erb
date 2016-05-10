@@ -23,6 +23,7 @@
         <div id="navbar" class="navbar-collapse collapse">
           <% if staff_signed_in? %>
           <ul class="nav navbar-nav navbar-right">
+
             <li>
               <% @jobs = Job.where(staff_id: current_staff.id)  %>
                     <% id = Array.new  %>
@@ -78,6 +79,13 @@
 
               </div>
             </li>
+
+            <% if current_staff.admin == false  %>
+            <li>
+              <%= link_to "Home", root_url%>
+            </li>
+            <% end %>
+
             <li id="user-icon">
               <div class="dropdown" id="user-menu">
                 <div class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -102,7 +110,7 @@
     <div class="container-fluid body">
       <div class="row">
 
-<% if staff_signed_in? %>
+<% if staff_signed_in? && current_staff.admin %>
 <!-- Start of Side-bar -->
         <div class="col-sm-3 col-md-2 sidebar">
 
@@ -113,7 +121,7 @@
           </ul>
 
           <ul class="nav nav-sidebar">
-            <li><a href="">All staff</a></li>
+            <li><%= link_to 'All staff', pages_staffoptions_path %></li>
             <li><%= link_to new_staff_registration_path do %> <span class="glyphicon glyphicon-user"></span> Add new staff  <% end %></li>
             <li><a href="">Add New Admin</a></li>
             <li><a href="">Disable User</a></li>

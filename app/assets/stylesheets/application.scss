@@ -101,7 +101,7 @@ body {
  * Top navigation
  * Hide default border to remove 1px line.
  */
- 
+
 .navbar-fixed-top {
   border: 0;
 }
@@ -292,6 +292,10 @@ body {
 .add-to {
 	font-size: .8em ;
 	margin-left: 5px;
+}
+
+.add-to:link {
+	color: #616161;
 }
 
 .add-to:hover {

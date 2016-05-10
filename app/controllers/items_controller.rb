@@ -63,6 +63,11 @@ class ItemsController < ApplicationController
   # DELETE /items/1
   # DELETE /items/1.json
   def destroy
+    # Delete all records within item
+    @item.records.each do |record|
+      record.destroy
+    end
+
     @item.destroy
     respond_to do |format|
       format.html { redirect_to project_items_url, notice: 'Item was successfully destroyed.' }

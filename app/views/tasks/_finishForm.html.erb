@@ -24,8 +24,8 @@
       <%= f.error_notification %>
 
       <div class="form-inputs">
+        <%= f.label :document, label: "Upload Supporting Document/s" %>
         <%= f.file_field :submission %>
-      <%= f.hidden_field  :project_id, :value => params[:project_id] %>
         <%= f.hidden_field  :project_id, :value => params[:project_id] %>
         <%= f.hidden_field :isFinished, :value => true %>
         <%= f.hidden_field :date_accomplished, :value => Date.today %>

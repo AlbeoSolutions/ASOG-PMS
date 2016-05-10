@@ -34,6 +34,14 @@ class RegistrationsController < Devise::RegistrationsController
   end
   end
 
+  def destroy
+  @staff = Staff.find(params[:staff_id])
+    @staff.destroy
+    respond_to do |format|
+      format.html { redirect_to pages_staffoptions_path, notice: 'Staff was successfully destroyed.' }
+    end
+  end
+
 
   def sign_up_params
     params.require(:staff).permit!

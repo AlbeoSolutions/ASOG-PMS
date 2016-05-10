@@ -45,6 +45,16 @@ class Project < ActiveRecord::Base
     self.items.map(&:item_title)
   end
 
+  def get_overdue_tasks
+    taskCount = 0
+    self.tasks.each do |task|
+      if task.due_date < Date.today && task.isFinished == false
+        taskCount += 1
+      end
+    end
+    taskCount
+  end
+
   def to_s
     "#{self.project_title}"
   end
