@@ -64,6 +64,14 @@ class Project < ActiveRecord::Base
     end
   end
 
+  def get_project_summary
+    "#{self.project_summary_filename}"
+  end
+
+  def get_project_brief
+    "#{self.project_brief_filename}"
+  end
+
   def to_s
     "#{self.project_title}"
   end

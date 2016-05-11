@@ -29,8 +29,14 @@
 <div class="main-wrapper">
 
   <p id="notice"><%= notice %></p>
-  <h3>Project Profile</h3>
-  <h4 class="project-heading"> <%= @project.project_title %> </h4><br>
+  <h3>Project Profile
+    <% if current_staff.admin? == true %>
+      <%= link_to project_path(@project.id), class: "delete-proj", method: :delete, data: { confirm: "Are you sure you want to delete #{@project} ?"} do %>
+      <span class="glyphicon glyphicon-remove"></span>
+      <% end %>
+    <% end %>
+  </h3>
+  <h4 class="project-heading"> <%= @project.project_title %></h4><br>
 
 
   <table class="table table-bordered project-profile-table">
@@ -55,13 +61,15 @@
     </tr>
   </table>
 
+  <% if @project.get_project_summary  != "" %>
+    <%= link_to "Download Project Summary", @project.project_summary_filename_url, class: "btn download-btn" %>
+  <% end %>
 
-  <%= link_to "Download Project Summary", @project.project_summary_filename_url, class: "btn download-btn" %>
+  <% if @project.get_project_brief != "" %>
+    <%= link_to "Download Project Brief", @project.project_brief_filename_url, class: "btn download-btn" %>
+  <% end %>
 
-
-  <%= link_to "Download Project Brief", @project.project_brief_filename_url, class: "btn download-btn" %>
-
-<% if current_staff.admin? %>
+<% if current_staff.admin? && @project.staffs.count != 0%>
   <div class="row staff-row">
     <h4> Project staff:</h4>
     <div class="col-md-12 project-staff">

@@ -6,7 +6,7 @@
     <thead>
       <th> Staff name </th>
       <th> Contract expiration Date</th>
-      <th> Options </th>
+      <th colspan="2" class="text-center"> Options </th>
     </thead>
 
     <tbody>
@@ -14,9 +14,14 @@
           <tr>
             <td> <%= staff %> </td>
             <td> <%= staff.contract_expiration_date.strftime('%b' +" " +'%d' +", "+ '%Y') %> </td>
-            <td> <%= link_to staff_registration_path(staff_id: staff), :confirm => "Are you sure?", :method => :delete do %>
+            <td class="text-center" > <%= link_to staff_registration_path(staff_id: staff), :confirm => "Are you sure?", :method => :delete do %>
               <span class="glyphicon glyphicon-remove"></span>
               <% end %>
+            </td>
+            <td class="text-center" > <%= link_to make_admin_path(staff.id), method: 'patch'  do %>
+              <span class="glyphicon glyphicon-arrow-up"></span>
+              <% end %>
+            </td>
           </tr>
         <% end %>
     </tbody>

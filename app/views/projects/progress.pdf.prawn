@@ -1,6 +1,6 @@
 require 'prawn/table'
 
-image "app/assets/images/asog_pdf.png", :width => 330, :height => 80, :position => 112
+image "app/assets/images/asog_pdf.png", :width => 330, :height => 110, :position => 112
 move_down 20
 
 text "Progress Report as of #{Date.today.strftime('%b' +" " +'%d' +", "+ '%Y')}", :align => :center

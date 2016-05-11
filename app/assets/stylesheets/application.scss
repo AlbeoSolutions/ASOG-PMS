@@ -5,10 +5,6 @@
 @import 'dropdowns-enhancement';
 
 
-
-
-
-
 /* GENERAL STYLES */
 
 body {
@@ -311,16 +307,19 @@ body {
 	font-weight: lighter;
 }
 
-.add-to {
+.add-to,
+.delete-proj {
 	font-size: .8em ;
 	margin-left: 5px;
 }
 
-.add-to:link {
+.add-to:link,
+.delete-proj:link {
 	color: #616161;
 }
 
-.add-to:hover {
+.add-to:hover,
+.delete-proj:hover {
 	color: #1C3F94;
 	background: none;
 }

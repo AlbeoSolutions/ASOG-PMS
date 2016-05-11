@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   get 'pages/error'
 
+  patch '/pages/staffoptions/:id/make_admin' => 'pages#make_admin', as: :make_admin
   resources :updates
 
   # resources :projects

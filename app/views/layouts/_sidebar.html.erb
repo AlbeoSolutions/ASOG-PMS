@@ -1,0 +1,18 @@
+<div class="col-sm-3 col-md-2 sidebar">
+
+  <ul class="nav nav-sidebar">
+    <li><%= link_to root_url do %>
+      <span class="glyphicon glyphicon-list-alt"></span> View all projects
+      <% end %>
+    </li>
+    <li><%= link_to new_project_path do %> <span class="glyphicon glyphicon-plus" ></span> Create new project   <% end %></li>
+  </ul>
+
+  <ul class="nav nav-sidebar">
+    <li><%= link_to pages_staffoptions_path do %> <span class="glyphicon glyphicon-user"></span> Manage staff  <% end %></li>
+    <li><%= link_to new_staff_registration_path do %>
+      <span class="glyphicon glyphicon-plus"></span> Add new staff account
+      <% end %>
+    </li>
+  </ul>
+</div>
