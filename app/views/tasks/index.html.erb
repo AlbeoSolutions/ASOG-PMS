@@ -38,23 +38,21 @@
     <h4 class="project-heading"><%= @project.project_title%></h4><br>
 
 
-<div class="row">
-  <div class="col-md-3 item-info">
-    <h4>Tasks remaining:
-      <span class="info-remaining"> <%= @project.tasks.where("isFinished = false").count %> </span>
-    </h4>
-  </div>
-  <div class="col-md-3 workplan-info">
-    <h4> Tasks finished:
-      <span class="info-finished"> <%= @project.tasks.where("isFinished = true").count %> </span>
-    </h4>
-  </div>
-  <div class="col-md-3 workplan-info">
-    <h4>Overdue Tasks: 0
-    </h4>
-  </div>
-</div><br>
-
+  <div class="row workplan-info-row">
+      <div class="col-md-4">
+        <h4>Tasks remaining:
+          <span class="info-remaining"> <%= @project.tasks.where("isFinished = false").count %> </span>
+        </h4>
+    </div>
+    <div class="col-md-4">
+      <h4> Tasks finished:
+        <span class="info-finished"> <%= @project.tasks.where("isFinished = true").count %> </span>
+      </h4>
+    </div>
+    <div class="col-md-4">
+      <h4>Overdue Tasks: <%= @project.get_overdue_tasks %></h4>
+    </div>
+  </div><br>
 
 <!-- TABS -->
     <ul class="nav nav-tabs">
@@ -82,7 +80,7 @@
       </thead>
 
       <tbody>
-        <% @project.tasks.each do |task| %>
+        <% @sort.each do |task| %>
             <tr>
               <td><%= task.task_title %></td>
               <td><%= task.description %></td>
@@ -170,7 +168,8 @@
                 </ul>
               </div>
             <% else %>
-              <%= link_to edit_project_task_path(:id => task.id, :project_id => params[:project_id]) do %> <span class="glyphicon glyphicon-edit"></span>
+              <%= link_to edit_project_task_path(:id => task.id, :project_id => params[:project_id]), class: "btn btn-sm btn-primary tl-fin" do %>
+              <span class="glyphicon glyphicon-edit"></span> Finish task
               <% end %>
             <% end %>
           </div>

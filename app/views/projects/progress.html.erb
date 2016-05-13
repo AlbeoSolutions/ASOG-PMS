@@ -39,7 +39,7 @@
       var myChart = new Chart(ctx, {
           type: 'bar',
           data: {
-              labels: <%= raw @project.get_items%>,
+              labels: <%= raw @project.get_items %>,
               datasets: [{
                   label: 'Amount Spent',
                   backgroundColor: "rgba(33, 150, 243, 1)",
@@ -114,6 +114,14 @@
               </div>
           </div>
         </div>
+
+        <% if current_staff.admin? %>
+          <div class="row dl-row">
+            <%= link_to project_progress_path(@project, :format => 'pdf'), class: "PDF-DL" do %>
+              Download as PDF <span class="glyphicon glyphicon-download-alt"></span>
+            <% end %>
+          </div>
+        <% end %>
 
 
     </div>

@@ -4,6 +4,12 @@
 
 // INDEX PROJECT STYLING
 
+.project-link:hover {
+  .project-icon-wrapper {
+    background: #1565c0;
+  }
+}
+
 .index-items {
   thead tr th {
     text-align: center;
@@ -44,11 +50,6 @@
   margin-bottom: 20px;
 }
 
-
-// NEW PROJECT STYLING
-
-
-
 // SHOW PROJECT STYLING
 
 .project-profile-table {
@@ -78,6 +79,15 @@
 
 .staff-row {
   margin-top: 20px;
+  padding: 10px 20px 10px 20px;
+
+  h4 {
+    background: #1C3F94;
+    padding: 10px;
+    color: #fff;
+    font-size: 1.1em;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  }
 
   .row {
     border-bottom: 1px solid #eee;
@@ -126,7 +136,7 @@
   }
 
   h5  {
-    font-size: 1.1em;
+    font-size: 1em;
   }
 
 }
@@ -151,4 +161,22 @@
     font-weight: bold;
     font-size: 1em;
   }
+}
+
+.dl-row {
+  text-align: center;
+  padding-top: 15px;
+}
+
+.PDF-DL {
+  color: #fff !important;
+  padding: 7px;
+  background: rgb(33, 150, 243);
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+}
+
+.PDF-DL:hover {
+  text-decoration: none;
+  background: #1976d2 ;
+  color: #fff;
 }

@@ -6,8 +6,7 @@
       <%= f.input :task_title %>
       <%= f.input :description %>
       <%= f.input :due_date %>
-      <%= f.label :submission, "Upload submission" %>
-      
+      <%= f.hidden_field  :project_id, :value => params[:project_id] %>
     </div>
 <br>
     <div class="form-actions">

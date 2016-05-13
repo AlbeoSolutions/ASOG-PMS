@@ -1,8 +1,9 @@
 class Item < ActiveRecord::Base
+  # Associations
   has_many :records
   belongs_to :project
 
-  #Callbacks
+  # Callbacks
   before_create :set_balance_left_attribute
 
   before_save :update_balance, if: :amount_spent_changed?
@@ -11,7 +12,7 @@ class Item < ActiveRecord::Base
   before_update :update_balance, if: :budget_changed?
   before_update :update_percentage, if: :budget_changed?
 
-
+  # Custom Methods
   def set_balance_left_attribute
     self.balance_left = budget
   end

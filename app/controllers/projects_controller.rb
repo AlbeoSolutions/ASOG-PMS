@@ -72,6 +72,24 @@ class ProjectsController < ApplicationController
   # DELETE /projects/1
   # DELETE /projects/1.json
   def destroy
+    # Delete tasks within project
+    @project.tasks.each do  |task|
+      task.destroy
+    end
+
+    # Delete items and records within project
+    @project.items.each do |item|
+      item.records.each do |record|
+        record.destroy
+      end
+      item.destroy
+    end
+
+    # Delete jobs within project
+    @project.jobs.each do |job|
+      job.destroy
+    end
+
     @project.destroy
     respond_to do |format|
       format.html { redirect_to projects_url, notice: 'Project was successfully destroyed.' }
