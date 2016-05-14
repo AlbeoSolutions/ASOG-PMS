@@ -67,7 +67,7 @@
               <h5 class="progtext-heading">Total budget:</h5>
             </div>
             <div class="col-xs-8 text-right">
-              <h5><%= @project.total_budget %></h5>
+              <h5><%= number_with_delimiter(@project.total_budget, :delimiter => ",")%></h5>
             </div>
         </div>
 
@@ -76,7 +76,7 @@
               <h5 class="progtext-heading">Total budget spent:</h5>
             </div>
             <div class="col-xs-8 text-right">
-              <h5><%= @project.total_amount_spent %></h5>
+              <h5><%= number_with_delimiter(@project.total_amount_spent, :delimiter => ",") %></h5>
             </div>
         </div>
 
@@ -85,7 +85,7 @@
               <h5 class="progtext-heading">Total budget left:</h5>
             </div>
             <div class="col-xs-8 text-right">
-              <h5><%= @project.total_budget - @project.total_amount_spent %></h5>
+              <h5><%= number_with_delimiter(@project.total_budget - @project.total_amount_spent , :delimiter => ",") %></h5>
             </div>
         </div>
 

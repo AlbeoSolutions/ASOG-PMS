@@ -58,8 +58,12 @@
         <% @project.items.each do |item| %>
           <tr>
             <td><%= item.item_title %></td>
-            <td class="text-right"><%= item.budget %></td>
-            <td class="text-right"><%= item.amount_spent %></td>
+            <td class="text-right"><%= number_with_delimiter(item.budget, :delimiter => ",") %></td>
+            <% if item.amount_spent > item.budget %>
+              <td class="text-right" style="color: #e53935;"> <strong>Overspending</strong> (<%= number_with_delimiter(item.amount_spent, :delimiter => ",") %>)</td>
+            <% else %>
+              <td class="text-right"><%= number_with_delimiter(item.amount_spent, :delimiter => ",") %></td>
+            <% end %>
             <td class="text-center"><%= link_to project_item_path(:id => item.id, :project_id => params[:project_id]) do %>
               <span class="glyphicon glyphicon-file"></span>
               <% end %>

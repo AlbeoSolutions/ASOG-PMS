@@ -51,21 +51,33 @@
     </div>
     <div class="col-md-4">
       <h4> Balance left:
-        <span> <%= number_with_delimiter(@item.balance_left, :delimiter => ",") %> </span>
+        <% if @item.amount_spent > @item.budget %>
+          <span style="color: #e53935;"> <%= number_with_delimiter(@item.balance_left, :delimiter => ",") %> </span>
+        <% else %>
+          <span> <%= number_with_delimiter(@item.balance_left, :delimiter => ",") %> </span>
+        <% end %>
       </h4>
     </div>
   </div><br>
 
   <p>
     <strong>Percentage spent:</strong>
-
   </p>
+  <% if @item.amount_spent > @item.budget %>
+  <div class="progress">
+    <div class="progress-bar progress-bar-striped active progress-percentage-spent overspending-progress" role="progressbar"
+    aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+      Overspending
+    </div>
+  </div>
+  <% else %>
   <div class="progress">
     <div class="progress-bar progress-bar-striped active progress-percentage-spent" role="progressbar"
     aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: <%= @item.percentage_spent %>%;">
       <%= @item.percentage_spent %> %
     </div>
   </div>
+  <% end %>
 <br>
 
 

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'notifications/show'
+
   get 'pages/error'
 
   #DEVISE ROUTING
