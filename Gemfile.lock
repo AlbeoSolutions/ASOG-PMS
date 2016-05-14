@@ -1,5 +1,5 @@
 GEM
-  remote: https://rubygems.org/
+  remote: http://rubygems.org/
   specs:
     actionmailer (4.2.4)
       actionpack (= 4.2.4)
@@ -40,6 +40,7 @@ GEM
     autoprefixer-rails (6.3.6)
       execjs
     bcrypt (3.1.11)
+    bcrypt (3.1.11-x86-mingw32)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -107,7 +108,10 @@ GEM
     minitest (5.8.4)
     multi_json (1.12.0)
     mysql2 (0.3.21)
+    mysql2 (0.3.21-x86-mingw32)
     nokogiri (1.6.7.2)
+      mini_portile2 (~> 2.0.0.rc2)
+    nokogiri (1.6.7.2-x86-mingw32)
       mini_portile2 (~> 2.0.0.rc2)
     orm_adapter (0.5.0)
     pdf-core (0.6.1)
@@ -194,6 +198,7 @@ GEM
 
 PLATFORMS
   ruby
+  x86-mingw32
 
 DEPENDENCIES
   better_errors
