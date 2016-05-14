@@ -38,10 +38,10 @@
         <div class="col-md-6">
           <div class="row">
             <div class="col-md-6">
-                <%= f.input :start_date %>
+                <%= f.input :start_date, start_year: Date.today.year, end_year: Date.today.year + 10 %>
             </div>
             <div class="col-md-6">
-                <%= f.input :end_date %>
+                <%= f.input :end_date, start_year: Date.today.year, end_year: Date.today.year + 10 %>
             </div>
           </div>
         </div>
@@ -52,7 +52,7 @@
           <div class="row">
             <div class="col-md-6">
               <%= f.label :project_summary_filename, label: 'Upload Project Summary' %>
-              <%= f.file_field :project_summary_filename%>
+              <%= f.file_field :project_summary_filename %>
             </div>
             <div class="col-md-6">
               <%= f.label :project_brief_filename, label: 'Upload Brief Summary' %>

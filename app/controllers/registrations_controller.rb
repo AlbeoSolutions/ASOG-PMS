@@ -13,7 +13,6 @@ class RegistrationsController < Devise::RegistrationsController
 
   # Custom create method for staff model. Allows admin to add new staff without log out
   def create
-
       build_resource(sign_up_params)
 
       resource.save
@@ -31,7 +30,7 @@ class RegistrationsController < Devise::RegistrationsController
         clean_up_passwords resource
         set_minimum_password_length
         respond_with resource
-  end
+      end
   end
 
   def destroy
@@ -41,7 +40,6 @@ class RegistrationsController < Devise::RegistrationsController
       format.html { redirect_to pages_staffoptions_path, notice: 'Staff was successfully destroyed.' }
     end
   end
-
 
   def sign_up_params
     params.require(:staff).permit!

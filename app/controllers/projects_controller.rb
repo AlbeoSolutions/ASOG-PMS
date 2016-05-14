@@ -13,13 +13,6 @@ class ProjectsController < ApplicationController
   def index
     @projects = Project.all.sort_by(&:updated_at).reverse
     @staff = current_staff
-    # @staffs = Staff.where(admin: false)
-    # @staffs.each do |staff|
-    #   difference = (staff.contract_expiration_date - Date.today).to_i
-    #   if difference == 60
-    #     @update = Update.create(content: "#{staff.first_name}'s contract will expire in #{difference} days.", read: false)
-    #   end
-    # end
   end
 
   # GET /projects/1

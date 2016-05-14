@@ -1,4 +1,6 @@
 class Item < ActiveRecord::Base
+  # Validations
+
   # Associations
   has_many :records
   belongs_to :project

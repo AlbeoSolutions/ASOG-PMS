@@ -1,13 +1,12 @@
 class Project < ActiveRecord::Base
   # Validations
-  validates_presence_of :project_title, :total_budget, :account_number
+  validates_presence_of :project_title, :total_budget, :account_number, :project_director, :funding_agency
 
   # Associations
   has_many :jobs
   has_many :tasks
   has_many :items
   has_many :staffs, through: :jobs
-  has_many :updates
   belongs_to :kpa_cluster
 
   # Callbacks

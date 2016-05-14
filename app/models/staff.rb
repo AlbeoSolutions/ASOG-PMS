@@ -5,7 +5,6 @@ class Staff < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
    # Validations
-   validates_presence_of :first_name, :last_name
 
    # Associations
    has_many :jobs
@@ -15,9 +14,20 @@ class Staff < ActiveRecord::Base
    accepts_nested_attributes_for :projects
    accepts_nested_attributes_for :jobs
 
+   #Mailboxer
+   acts_as_messageable
+
    # Methods
    def to_s
      "#{self.first_name + " " + self.last_name }"
+   end
+
+   def name
+     "#{self}"
+   end
+
+   def mailboxer_email(object)
+      return nil
    end
 
 end

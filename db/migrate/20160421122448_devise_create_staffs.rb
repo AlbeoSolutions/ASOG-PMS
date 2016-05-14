@@ -4,7 +4,7 @@ class DeviseCreateStaffs < ActiveRecord::Migration
       ## Database authenticatable
       t.string :first_name
       t.string :last_name
-      t.date :contract_expiration_date
+      t.date   :contract_expiration_date
 
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""

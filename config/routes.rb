@@ -1,22 +1,13 @@
 Rails.application.routes.draw do
-
-  get 'pages/index'
-
   get 'pages/error'
 
-  patch '/pages/staffoptions/:id/make_admin' => 'pages#make_admin', as: :make_admin
-  resources :updates
-
-  # resources :projects
-
   #DEVISE ROUTING
-
   devise_for :staffs, :controllers => { registrations: 'registrations' }
-
+  
   devise_scope :staff do
     authenticated  do
       root to: 'projects#index'
-
+      patch '/pages/staffoptions/:id/make_admin' => 'pages#make_admin', as: :make_admin
       get 'pages/staffoptions'
 
       resources :projects do
@@ -26,7 +17,6 @@ Rails.application.routes.draw do
           resources :records
         end
       end
-
     end
 
     unauthenticated do

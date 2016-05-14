@@ -37,7 +37,11 @@
     </div>
     <div class="col-md-3">
       <p><strong>Date accomplished:</strong></p>
-      <%= @task.date_accomplished %>
+      <% if @task.date_accomplished != nil %>
+        <%= @task.date_accomplished.strftime('%b' +" " +'%d' +", "+ '%Y') %>
+      <% else %>
+        N/A
+      <% end %>
     </div>
   </div>
 

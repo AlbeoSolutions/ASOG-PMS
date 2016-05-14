@@ -7,6 +7,7 @@ gem 'devise'
 gem 'carrierwave'
 gem 'chart-js-rails'
 gem 'cocoon'
+gem 'mailboxer'
 gem 'prawn'
 gem 'prawn-table'
 gem "prawnto_2", :require => "prawnto"

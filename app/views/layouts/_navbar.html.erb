@@ -12,68 +12,49 @@
     <div id="navbar" class="navbar-collapse collapse">
       <% if staff_signed_in? %>
       <ul class="nav navbar-nav navbar-right">
-
+        <% if current_staff.admin? %>
         <li>
-          <% @jobs = Job.where(staff_id: current_staff.id)  %>
-                <% id = Array.new  %>
-                <%  @jobs.each do |job| %>
-                <%  project = job.project %>
-                <% b = project.id %>
-                  <% id.push(b) %>
-                <% end %>
-                <% @projects = Array.new  %>
-                <% id.each do |i|  %>
-                <% project = Project.find(i)  %>
-                <% @projects.push(project)  %>
-                <% end %>
-                <% updatescount = 0  %>
-                <% @projects.each do |project|  %>
-                    <% updates = Update.where(project_id: project.id, read: false) %>
-                    <% updates.each do%>
-                      <% updatescount = updatescount + 1 %>
-                    <% end %>
-                <% end %>
           <div class="dropdown" id="user-menu">
             <div class="dropdown-toggle nav-notif" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
               Notifications
-              <% if updatescount > 0  %>
-                <span class="badge"> <%= updatescount %></span>
+              <span class="badge">
+                <% count = 0 %>
+                <% current_staff.mailbox.notifications.each do |notification| %>
+                  <% if notification.is_read?(current_staff) == false %>
+                    <% count = count + 1 %>
+                  <% end %>
                 <% end %>
-
+                <%= count %>
+              </span>
             </div>
 
-              <ul class="dropdown-menu bullet pull-right scrollable-menu" aria-labelledby="dropdownMenu1">
-                <li class="dropdown-item"> <strong><%= link_to "View all notifications", updates_path %></strong></li>
-                <% if current_staff.admin == true %>
-                <% updates = Update.last(20)  %>
-                <% updates.reverse.each do |update| %>
-                  <li class="dropdown-item"> <%= link_to "#{update.content}",update_path(update.id) %> </li>
+              <ul class="dropdown-menu bullet pull-right scrollable-menu notification-drop" aria-labelledby="dropdownMenu1">
+
+                <% current_staff.mailbox.notifications.each do |notification| %>
+                <% @project = Project.find(notification.notification_code) %>
+                  <%= link_to @project do %>
+                  <% if notification.is_read?(current_staff) %>
+                  <li class="dropdown-item">
+                  <% else %>
+                  <li class="dropdown-item unread">
+                  <% end %>
+                    <p><strong>Project: <%= notification.subject %></strong></p>
+                    <%= notification.body %>
+                  </li>
+
+                  <% end %>
+
                 <% end %>
-
-                <% elsif current_staff.admin == false %>
-                <% @projects.each do |project| %>
-                <% @updates = Update.where(project_id: project.id).last(10) %>
-                    <% @updates.reverse.each do |update| %>
-                      <% if update.read = false %>
-                        <li class="dropdown-item"><strong><%= link_to "#{update.content}", update_path(update.id) %> </strong> </li>
-                      <% else %>
-                        <li class="dropdown-item"> <%= link_to "#{update.content}", update_path(update.id) %> </li>
-                      <% end %>
-
-                    <% end %>
-                <% end %>
-              <% end %>
-
               </ul>
-
           </div>
         </li>
+        <% end %>
 
-        <% if current_staff.admin == false  %>
+      <% if current_staff.admin == false  %>
         <li>
           <%= link_to "Home", root_url, class: "nav-home" %>
         </li>
-        <% end %>
+      <% end %>
 
         <li id="user-icon">
           <div class="dropdown" id="user-menu">
@@ -84,7 +65,6 @@
               <ul class="dropdown-menu bullet pull-right" aria-labelledby="dropdownMenu1">
                 <li class="dropdown-item"><strong>Signed in as:</strong></li>
                 <li class="dropdown-item"><%= current_staff.first_name %> <%= current_staff.last_name %> </li>
-                <li class="dropdown-item"> View Profile </li>
                 <li class="dropdown-item"> <%= link_to "Log Out", destroy_staff_session_path, method: :delete%></li>
               </ul>
 

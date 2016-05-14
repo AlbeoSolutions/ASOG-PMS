@@ -1,4 +1,7 @@
 class Record < ActiveRecord::Base
+  # Validations
+  validates_presence_of :expenditure, :document
+
   # Associations
   belongs_to :item
 
@@ -8,6 +11,22 @@ class Record < ActiveRecord::Base
 
   # Carrierwave
   mount_uploader :document, AttachmentUploader
+
+  # Notifications
+  after_save :new_expenditure_notification
+
+  def new_expenditure_notification
+    @theItem = Item.find(self.item_id)
+    @theProject = Project.find(@theItem.project_id)
+
+
+    @staffs = Staff.all.where(admin: true)
+    subject = "#{@theProject}"
+    body = "New expenditure for item: #{@theItem} | Amount: #{self.expenditure}"
+    @staffs.each do | staff |
+      staff.notify(subject, body, obj = nil, sanitize_text = true, notification_code = @theProject.id)
+    end
+  end
 
   # Methods
   def update_item

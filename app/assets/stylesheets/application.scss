@@ -338,3 +338,22 @@ body {
 		color: white !important;
 	}
 }
+
+/* NOTIFICATION STYLES */
+.notification-drop {
+	width: 350px;
+
+	a {
+		text-decoration: none;
+	}
+
+	li {
+		text-align: left;
+    padding: 15px 5px 15px 5px !important;
+		margin-bottom: 1px;
+	}
+
+	.unread {
+		background: #eee;
+	}
+}
