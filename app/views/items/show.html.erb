@@ -28,7 +28,7 @@
 
 
 <div class="main-wrapper">
-  <p id="notice"><%= notice %></p>
+  <input type="text" id="notice" name="notice" value="<%= notice %>" hidden>
 
   <h3 class=""><%= @project%>
     <%= link_to new_project_item_record_path(@project.id, @item.id), class: "add-to" do %>

@@ -25,7 +25,7 @@
 </div>
 
 <div class="main-wrapper">
-  <p id="notice"><%= notice %></p>
+  <input type="text" id="notice" name="notice" value="<%= notice %>" hidden>
 
   <div class="index-tasks">
     <h3>Project Work plan
@@ -90,7 +90,7 @@
                   <td style="color: green;"> Complete </td>
                 <% else %>
                   <% if task.get_is_overdue %>
-                    <td style="color: #d9534f;"> Overdue </td>
+                    <td style="color: #d9534f;"> Overdue * </td>
                   <% else %>
                     <td style="color: #d9534f;"> Incomplete </td>
                   <% end %>
@@ -157,7 +157,7 @@
             <h4 class="timeline-title"><%= task.task_title %>
               <% if task.isFinished == false %>
                 <% if task.get_is_overdue %>
-                    <span style="color: #d9534f;">(Overdue)</span>
+                    <span style="color: #d9534f;">*</span>
                 <% end %>
               <% end %>
             </h4>

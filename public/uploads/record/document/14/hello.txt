@@ -1,0 +1,172 @@
+system implementation
+-you just code during the implem stage
+
+CODING
+-translating design into program
+-easiest part in implementation
+
+TESTING
+-finding our if the code works according to specs
+
+INSTALLATION
+-moving from old system to the new system
+-includes users
+
+DELIVERABLES
+
+DOCUMENTATION
+-have user manual
+-need documentation for those who will maintain the system
+
+TRAINING
+-app specific training
+-depends on audience
+
+
+FOR DOCU(DELI)
+-system documentation
+-user documentation
+
+USER TRAINING PLAN
+-classes to be taught to the user
+
+-should also have training materials and modules
+-how do they get back to you
+
+
+TESTING
+-you have a tester that makes sure that your code doesnt have issue
+-you make a test plan-figuring out how to test a system
+
+UNIT TESTING-only type of testing that can be made by the developer
+test driven development-
+
+
+STATIC TESTING
+-syntax errors
+
+DYNAMIC
+-using the system
+
+MANUAL vs AUTOMATED
+-person vs tool
+
+MANUAL
+--inspection
+--walkthrough:like cs21a defense but panel, focuses on code flow
+--desk checking:focus on code flow
+
+AUTOMATED
+-syntax checking-compiler
+-unit testing: test per module
+-integration testing:test when connected
+
+every testing, you need to fix the errors first before testing it again
+
+SYSTEM TESTING
+
+STUB TESTING
+-inserting some lines in your code 
+
+typical system use
+critical system use--high priority
+abnormal system use--not normally used
+
+TEST CASES
+-have to be developed by analysts
+-cannot be made by developer
+-symbolic debuggers
+
+USER ACCEPTANCE TESTING
+-alpha testing: make users use the system controlling environment
+-beta testing: make users use the system out in the wild: soft opening
+-goal: make them say yes
+
+ALPHA TESTING
+1. Security testing
+-concerned with access
+-who can do what
+-how can you ensure that this will happen
+2. Performance testing
+3. Stress testing
+-trying to break the system
+4. recovery testing
+-trying to see if any data is corrupted
+
+INSTALLATION
+-hardest part of implem stage
+-dealing with people
+1. direct installation
+-today use this system, tomorrow, new system
+-problem when system crashes: stops operations
+-not good reputation about the system
+-has to have a clear back up plan
+2. parallel installation
+-use the system simultaneously
+-safe
+-expensive in terms of time??
+-data discrepancy issue
+-up to whatpoint will you let go of the new system
+3. single location
+-one site at a time
+-worst time should be the first time
+4. Phased
+-10% of system first, etc
+-phasing features that the system has
+-for really big systems
+
+
+NOTSO HUMAN PART: Planning the installation
+-figure out the best time when to install the system
+-one strategy: purchase a scanner
+-hire an encoder 
+^copying data
+
+
+SYSTEMS DOCUMENTATION
+-make docu for admin
+-importance of documentation:system needs to be maintained
+-user manual not all words
+-important to give contact to users: feedback line: viber, email, contact num
+
+Providing support via help desk
+-you have to be patient
+
+BIGGEST SUCCESS MEASURE
+-will it be used
+-hard to get people to use the system
+-you just need to know how to deal with people
+
+PROJECT CLOSE DOWN
+
+
+
+MAINTENANCE
+-trying to improve the system
+-has its own sdlc
+1. CORRECTIVE MAINTENANCE
+-giving warranty
+-bugs
+-least value adding
+2. preventive maintenance
+-tune up for cars
+3. adaptive
+-root of change has to come from the business
+4. perfective maintenance
+-dfds dont change
+-most value added
+-fix currently functional requirements
+-same thing but better
+
+COST OF MAINTENANCE
+-EASIER TO MAINTAIN IF YOU HAVE FEW USERS
+-no documentation, goodluck
+
+no of failures and time between failures
+
+pm or sa accepts request
+-always important to have a stable version
+
+case tools
+-focus is on design
+-most important is design document

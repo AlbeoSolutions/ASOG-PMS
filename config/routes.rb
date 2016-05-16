@@ -12,6 +12,8 @@ Rails.application.routes.draw do
       patch '/pages/staffoptions/:id/make_admin' => 'pages#make_admin', as: :make_admin
       get 'pages/staffoptions'
 
+      patch 'projects/:id/finish_project/', to: 'projects#finish_project', as: :finish_project
+
       get 'projects/read/:id', to: 'projects#read', as: :project_read
       resources :projects do
         get :progress

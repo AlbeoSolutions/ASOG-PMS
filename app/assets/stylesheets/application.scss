@@ -1,4 +1,5 @@
- //*= require_tree .
+//*= require toastr
+//*= require_tree .
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
@@ -47,6 +48,17 @@ body {
 	padding-top: 10px;
 	padding-left: 5px;
 	padding-right: 5px;
+}
+
+.notif-count {
+	background: #d9534f !important;
+}
+
+.notif-time {
+	font-size: 0.7em;
+	margin-top: 5px;
+	margin-bottom: 0px;
+	color: #bdbdbd;
 }
 
 .nav-notif:hover,

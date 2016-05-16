@@ -27,7 +27,7 @@
 
 
 <div class="main-wrapper">
-  <p id="notice"><%= notice %></p>
+  <input type="text" id="notice" name="notice" value="<%= notice %>" hidden>
 
   <div class="index-items">
     <h3>Project Financial Plan
@@ -60,7 +60,7 @@
             <td><%= item.item_title %></td>
             <td class="text-right"><%= number_with_delimiter(item.budget, :delimiter => ",") %></td>
             <% if item.amount_spent > item.budget %>
-              <td class="text-right" style="color: #e53935;"> <strong>Overspending</strong> (<%= number_with_delimiter(item.amount_spent, :delimiter => ",") %>)</td>
+              <td class="text-right" style="color: #e53935;">* <%= number_with_delimiter(item.amount_spent, :delimiter => ",") %></td>
             <% else %>
               <td class="text-right"><%= number_with_delimiter(item.amount_spent, :delimiter => ",") %></td>
             <% end %>

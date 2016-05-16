@@ -28,12 +28,18 @@
 
 <div class="main-wrapper">
 
-  <p id="notice"><%= notice %></p>
+  <input type="text" id="notice" name="notice" value="<%= notice %>" hidden>
   <h3>Project Profile
     <% if current_staff.admin? == true %>
-      <%= link_to project_path(@project.id), class: "delete-proj", method: :delete, data: { confirm: "Are you sure you want to delete #{@project} ?"} do %>
-      <span class="glyphicon glyphicon-remove"></span>
+     <% if @project.isOngoing %>
+        <%= link_to finish_project_path, method: :patch, data: { confirm: "Are you sure you want to mark #{@project} as Complete?"}, class: "fin-proj-btn" do %>
+          <span class="glyphicon glyphicon-ok"></span>
+        <% end %>
+      <!-- <%= link_to project_path(@project.id), class: "delete-proj", method: :delete, data: { confirm: "Are you sure you want to delete #{@project} ?"} do %>
+        <span class="glyphicon glyphicon-remove"></span>
+      <% end %> -->
       <% end %>
+
     <% end %>
   </h3>
   <h4 class="project-heading"> <%= @project.project_title %></h4><br>
@@ -84,18 +90,27 @@
     </div>
 
     <div class="col-md-12 project-staff">
-      <% @project.staffs.each do |staff| %>
+
+      <% @project.staffs.all.sort_by(&:contract_expiration_date).each do |staff| %>
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
           <h5> <%= staff.to_s %> </h5>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-4">
           <h6>Contract expiration: <%= staff.contract_expiration_date.strftime('%b' +" " +'%d' +", "+ '%Y') %></h6>
         </div>
-      </div>
 
+        <div class="col-md-4 text-center">
+          <% if staff.contract_days_left >= 0 %>
+            <h6>Expires in: <%= staff.contract_days_left %> Days</h6>
+          <% else %>
+            <h6 style="color: #d9534f;">Expired</h6>
+          <% end %>
+        </div>
+      </div>
       <% end %>
+
     </div>
   </div>
 <% end %>

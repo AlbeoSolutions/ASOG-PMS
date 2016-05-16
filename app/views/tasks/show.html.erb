@@ -25,36 +25,43 @@
 </div>
 
 <div class="main-wrapper">
-  <p id="notice"><%= notice %></p>
+  <div class="task-show-wrapper">
+    <input type="text" id="notice" name="notice" value="<%= notice %>" hidden>
 
-  <h3><%= @project.project_title %></h3>
-  <h4 class="project-heading">Task: <%= @task.task_title %></h4><br>
+    <h3><%= @project.project_title %></h3>
+    <h4 class="project-heading">Task: <%= @task.task_title %></h4><br>
 
-  <div class="row task-dates">
-    <div class="col-md-2">
-      <p><strong>Due date:</strong></p>
-      <%= @task.due_date.strftime('%b' +" " +'%d' +", "+ '%Y') %>
+    <div class="row task-dates">
+      <div class="col-md-2">
+        <p><strong>Due date:</strong></p>
+        <%= @task.due_date.strftime('%b' +" " +'%d' +", "+ '%Y') %>
+      </div>
+      <div class="col-md-3">
+        <p><strong>Date accomplished:</strong></p>
+        <% if @task.date_accomplished != nil %>
+          <%= @task.date_accomplished.strftime('%b' +" " +'%d' +", "+ '%Y') %>
+        <% else %>
+          N/A
+        <% end %>
+      </div>
     </div>
-    <div class="col-md-3">
-      <p><strong>Date accomplished:</strong></p>
-      <% if @task.date_accomplished != nil %>
-        <%= @task.date_accomplished.strftime('%b' +" " +'%d' +", "+ '%Y') %>
-      <% else %>
-        N/A
-      <% end %>
-    </div>
+
+
+    <p>
+      <strong>Description:</strong>
+    </p>
+
+    <p class="description-paragraph">
+      <%= @task.description %>
+    </p>
+    <br>
+
+    <% if @task.get_submission != "" %>
+      <%= link_to "Download submission/deliverable", @task.submission_url, class: "btn btn-primary" %><br><br>
+    <% end %>
+
+
+    <%= link_to 'Back', project_tasks_path(:project_id => params[:project_id]), class: "btn btn-danger" %>
   </div>
 
-
-  <p>
-    <strong>Description:</strong>
-  </p>
-
-  <p class="description-paragraph">
-    <%= @task.description %>
-  </p>
-  <br>
-
-
-  <%= link_to 'Back', project_tasks_path(:project_id => params[:project_id]), class: "btn btn-danger" %>
 </div>

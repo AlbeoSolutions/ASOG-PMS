@@ -21,9 +21,15 @@ class Task < ActiveRecord::Base
     end
   end
 
+  def get_submission
+    "#{self.submission}"
+  end
+
   def get_is_overdue
-    if Date.today > self.due_date
-      return true
+    if self.isFinished == false
+      if Date.today > self.due_date
+        return true
+      end
     end
   end
 

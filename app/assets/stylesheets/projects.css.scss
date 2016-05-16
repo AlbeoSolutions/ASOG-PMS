@@ -51,9 +51,17 @@
 }
 
 // SHOW PROJECT STYLING
+.fin-proj-btn {
+  color: #616161;
+
+}
+
+.fin-proj-btn:hover {
+  background: none;
+  color: #1C3F94;
+}
 
 .project-profile-table {
-  // width: 70% !important;
 
   .table-heading {
     background-color: #1C3F94;
@@ -126,6 +134,7 @@
 .project-no-padding {
   padding: 0 !important;
 }
+
 // PROGRESS REPORT STYLING
 
 .date-as-of {

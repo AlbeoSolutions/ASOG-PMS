@@ -1,5 +1,5 @@
 <div class="main-wrapper">
-  <p id="notice"><%= notice %></p>
+  <input type="text" id="notice" name="notice" value="<%= notice %>" hidden>
 
   <% if current_staff.admin? %>
   <h1 class="project-heading">All Projects</h1><br>

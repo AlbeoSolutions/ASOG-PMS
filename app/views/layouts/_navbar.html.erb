@@ -17,7 +17,7 @@
           <div class="dropdown" id="user-menu">
             <div class="dropdown-toggle nav-notif" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
               Notifications
-              <span class="badge">
+              <span class="badge notif-count">
                 <% count = 0 %>
                 <% current_staff.mailbox.notifications.each do |notification| %>
                   <% if notification.is_read?(current_staff) == false %>
@@ -40,6 +40,7 @@
                   <% end %>
                     <p><strong>Project: <%= notification.subject %></strong></p>
                     <%= notification.body %>
+                    <p class="notif-time"> <%= notification.created_at.strftime('%b' +" " +'%d' +", "+ '%Y'  " / "+ '' + " %I:%M " + '%p') %></p>
                   </li>
 
                   <% end %>

@@ -1,12 +1,13 @@
 <div class="main-wrapper">
-<p id="notice"><%= notice %></p>
+<input type="text" id="notice" name="notice" value="<%= notice %>" hidden>
 
   <h1 class="project-heading">Manage staff accounts: </h1>
 
   <table class="table staff-table">
     <thead>
       <th> Staff name </th>
-      <th> Contract expiration Date</th>
+      <th class="text-center"> Contract expiration Date</th>
+      <th> Days left </th>
       <th colspan="2" class="text-center"> Options </th>
     </thead>
 
@@ -14,12 +15,19 @@
         <% @staffs.each do |staff| %>
           <tr>
             <td> <%= staff %> </td>
-            <td> <%= staff.contract_expiration_date.strftime('%b' +" " +'%d' +", "+ '%Y') %> </td>
+            <td class="text-center"> <%= staff.contract_expiration_date.strftime('%b' +" " +'%d' +", "+ '%Y') %> </td>
+            <td>
+              <% if staff.contract_days_left >= 0 %>
+                <%= staff.contract_days_left %>
+              <% else %>
+                <span style="color: #d9534f;">Expired</span>
+              <% end %>
+            </td>
             <td class="text-center" > <%= link_to staff_registration_path(staff_id: staff), :confirm => "Are you sure?", :method => :delete do %>
               <span class="glyphicon glyphicon-remove"></span>
               <% end %>
             </td>
-            <td class="text-center" > <%= link_to make_admin_path(staff.id), method: 'patch'  do %>
+            <td class="text-center" > <%= link_to make_admin_path(staff.id), method: 'patch', data: { confirm: "Are you sure you want to promote #{staff} to admin?"}  do %>
               <span class="glyphicon glyphicon-arrow-up"></span>
               <% end %>
             </td>

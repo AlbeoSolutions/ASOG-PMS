@@ -8,7 +8,7 @@ class PagesController < ApplicationController
     @staff = Staff.find(params[:id])
     @staff.update_attribute :admin, true
     respond_to do |format|
-      format.html {redirect_to pages_staffoptions_path, notice: "#{@staff} Successfully made admin"}
+      format.html {redirect_to pages_staffoptions_path, notice: "#{@staff} promoted to admin"}
     end
   end
 

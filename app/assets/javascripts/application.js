@@ -18,4 +18,12 @@
 //= require dropdowns-enhancement
 //= require tasks
 //= require Chart
-//= require cocoon
+//= require toastr
+
+
+  $(document).ready(function() {
+    if ( $('#notice').val() ) {
+      toastr.success($('#notice').val(), 'Success!')
+      $('#notice').val("");
+    }
+  });

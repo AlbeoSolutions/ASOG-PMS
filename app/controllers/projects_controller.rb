@@ -8,6 +8,15 @@ class ProjectsController < ApplicationController
     @items = @project.items
   end
 
+  # Custom functionality
+  def finish_project
+    @project = Project.find(params[:id])
+    @project.update_attributes(isOngoing: false)
+    respond_to do |format|
+      format.html {redirect_to projects_path, notice: "Project: #{self} marked as complete"}
+    end
+  end
+
   def read
     notification = current_staff.mailbox.notifications.find(params[:id])
     notification.mark_as_read(current_staff)
@@ -29,7 +38,6 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     @staff = current_staff
-    #@staff = Staff.find(params[:id])
   end
 
   # GET /projects/new
