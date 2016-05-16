@@ -8,6 +8,15 @@ class ProjectsController < ApplicationController
     @items = @project.items
   end
 
+  def read
+    notification = current_staff.mailbox.notifications.find(params[:id])
+    notification.mark_as_read(current_staff)
+    @project = Project.find(notification.notification_code)
+    # @project = Project.find(params[:id])
+    @staff = current_staff
+    render :show
+  end
+
   # GET /projects
   # GET /projects.json
   def index

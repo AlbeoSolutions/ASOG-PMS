@@ -5,13 +5,14 @@ Rails.application.routes.draw do
 
   #DEVISE ROUTING
   devise_for :staffs, :controllers => { registrations: 'registrations' }
-  
+
   devise_scope :staff do
     authenticated  do
       root to: 'projects#index'
       patch '/pages/staffoptions/:id/make_admin' => 'pages#make_admin', as: :make_admin
       get 'pages/staffoptions'
 
+      get 'projects/read/:id', to: 'projects#read', as: :project_read
       resources :projects do
         get :progress
         resources :tasks

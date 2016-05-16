@@ -1,5 +1,7 @@
 class Item < ActiveRecord::Base
   # Validations
+  validates_presence_of :budget, :item_title
+  validates :budget, :numericality => { :greater_than_or_equal_to => 1 }
 
   # Associations
   has_many :records

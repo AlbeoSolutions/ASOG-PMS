@@ -1,6 +1,17 @@
-<h1>Editing Project</h1>
+<h1 class="form-head">Assign staff to Project</h1>
+<h3 class="text-center"><%= @project %></h3>
+<div class="form-wrapper">
 
-<%= render 'form' %>
 
-<%= link_to 'Show', @project %> |
-<%= link_to 'Back', projects_path %>
+  <%= simple_form_for(@project) do |f| %>
+  <%= f.association :staffs, :input_html => { :size => 13 } %>
+
+
+  <div class="form-actions row">
+    <%= link_to 'Back', project_path, class: "btn btn-danger" %>
+    <%= f.submit "Save Changes", class: "btn btn-primary" %>
+  </div>
+
+
+  <% end %>
+</div>

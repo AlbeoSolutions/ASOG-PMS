@@ -89,7 +89,11 @@
                 <% if task.isFinished %>
                   <td style="color: green;"> Complete </td>
                 <% else %>
-                  <td style="color: #d9534f;"> Incomplete </td>
+                  <% if task.get_is_overdue %>
+                    <td style="color: #d9534f;"> Overdue </td>
+                  <% else %>
+                    <td style="color: #d9534f;"> Incomplete </td>
+                  <% end %>
                 <% end %>
 
               <% if current_staff.admin? %>
@@ -150,7 +154,13 @@
 
         <div class="timeline-panel">
           <div class="timeline-heading">
-            <h4 class="timeline-title"><%= task.task_title %></h4>
+            <h4 class="timeline-title"><%= task.task_title %>
+              <% if task.isFinished == false %>
+                <% if task.get_is_overdue %>
+                    <span style="color: #d9534f;">(Overdue)</span>
+                <% end %>
+              <% end %>
+            </h4>
             <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> <%= task.due_date.strftime('%b' +" " +'%d' +", "+ '%Y') %></small></p>
           </div>
           <div class="timeline-body">
@@ -168,8 +178,14 @@
                 </ul>
               </div>
             <% else %>
-              <%= link_to edit_project_task_path(:id => task.id, :project_id => params[:project_id]), class: "btn btn-sm btn-primary tl-fin" do %>
-              <span class="glyphicon glyphicon-edit"></span> Finish task
+              <% if task.isFinished == false %>
+                <%= link_to edit_project_task_path(:id => task.id, :project_id => params[:project_id]), class: "btn btn-sm btn-primary tl-fin" do %>
+                <span class="glyphicon glyphicon-edit"></span> Finish task
+                <% end %>
+              <% else %>
+                <%= link_to project_task_path(:id => task.id, :project_id => params[:project_id]), class: "btn btn-sm btn-primary tl-fin" do %>
+                 View task
+                <% end %>
               <% end %>
             <% end %>
           </div>

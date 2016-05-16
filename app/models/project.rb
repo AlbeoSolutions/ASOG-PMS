@@ -1,6 +1,17 @@
 class Project < ActiveRecord::Base
   # Validations
   validates_presence_of :project_title, :total_budget, :account_number, :project_director, :funding_agency
+  validates :total_budget, :numericality => { :greater_than_or_equal_to => 1 }
+  validate :date_validation
+
+  def date_validation
+    if self[:end_date] < self[:start_date]
+      errors[:end_date] << "End date should be later than start date"
+      return false
+    else
+      return true
+    end
+  end
 
   # Associations
   has_many :jobs

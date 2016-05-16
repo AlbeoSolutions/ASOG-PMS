@@ -51,7 +51,7 @@ class ItemsController < ApplicationController
   def update
     respond_to do |format|
       if @item.update(item_params)
-        format.html { redirect_to project_item_path(:id => @item.id, :project_id => params[:project_id]), notice: 'Task was successfully created.' }
+        format.html { redirect_to project_item_path(:id => @item.id, :project_id => params[:project_id]), notice: 'Task was successfully updated.' }
         format.json { render :show, status: :ok, location: @item }
       else
         format.html { render :edit }

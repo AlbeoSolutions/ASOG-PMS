@@ -32,7 +32,7 @@
 
                 <% current_staff.mailbox.notifications.each do |notification| %>
                 <% @project = Project.find(notification.notification_code) %>
-                  <%= link_to @project do %>
+                  <%= link_to project_read_path(notification) do %>
                   <% if notification.is_read?(current_staff) %>
                   <li class="dropdown-item">
                   <% else %>

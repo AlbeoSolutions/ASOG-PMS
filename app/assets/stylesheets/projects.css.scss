@@ -81,12 +81,20 @@
   margin-top: 20px;
   padding: 10px 20px 10px 20px;
 
-  h4 {
-    background: #1C3F94;
+  .heading-row {
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 10px;
     padding: 10px;
+    background: #1C3F94;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  }
+
+  h4 {
+    margin: 0;
     color: #fff;
     font-size: 1.1em;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    padding: 0px;
   }
 
   .row {
@@ -101,7 +109,23 @@
   box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
 }
 
+.add-projstaff-icon {
+  span {
+    color: white;
+    text-align: right;
+  }
+}
 
+.add-projstaff-icon:hover {
+  background: none;
+    span {
+      color: #eee;
+    }
+}
+
+.project-no-padding {
+  padding: 0 !important;
+}
 // PROGRESS REPORT STYLING
 
 .date-as-of {

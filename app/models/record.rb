@@ -1,6 +1,7 @@
 class Record < ActiveRecord::Base
   # Validations
   validates_presence_of :expenditure, :document
+  validates :expenditure, :numericality => { :greater_than_or_equal_to => 1 }
 
   # Associations
   belongs_to :item

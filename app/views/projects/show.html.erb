@@ -71,7 +71,18 @@
 
 <% if current_staff.admin? && @project.staffs.count != 0%>
   <div class="row staff-row">
-    <h4> Project staff:</h4>
+    <div class="row heading-row">
+      <div class="col-md-6 project-no-padding">
+        <h4> Project staff:</h4>
+      </div>
+      <div class="col-md-6 text-right">
+        <%= link_to edit_project_path, class: "add-projstaff-icon" do %>
+          <span class="glyphicon glyphicon-plus "></span>
+        <% end %>
+      </div>
+
+    </div>
+
     <div class="col-md-12 project-staff">
       <% @project.staffs.each do |staff| %>
       <div class="row">

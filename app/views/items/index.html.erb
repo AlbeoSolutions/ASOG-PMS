@@ -48,7 +48,7 @@
             <th colspan="3" class="text-center"> Options</th>
           <% else %>
             <th class="text-center">
-              View Records
+              Add Record
             </th>
           <% end %>
         </tr>
@@ -64,17 +64,23 @@
             <% else %>
               <td class="text-right"><%= number_with_delimiter(item.amount_spent, :delimiter => ",") %></td>
             <% end %>
+            <% if current_staff.admin? %>
             <td class="text-center"><%= link_to project_item_path(:id => item.id, :project_id => params[:project_id]) do %>
               <span class="glyphicon glyphicon-file"></span>
               <% end %>
             </td>
-            <% if current_staff.admin? %>
             <td class="text-center"><%= link_to edit_project_item_path(:id => item.id, :project_id => params[:project_id]) do %>
               <span class="glyphicon glyphicon-cog"></span>
               <% end %>
             </td>
             <td class="text-center"><%= link_to project_item_path(:id => item.id, :project_id => params[:project_id]), method: :delete, data: { confirm: "Are you sure you want to delete #{item.item_title} ?" } do %>
               <span class="glyphicon glyphicon-remove"></span>
+              <% end %>
+            </td>
+
+            <% else %>
+            <td class="text-center"><%= link_to project_item_path(:id => item.id, :project_id => params[:project_id]) do %>
+              <span class="glyphicon glyphicon-plus"></span>
               <% end %>
             </td>
             <% end %>

@@ -5,7 +5,8 @@ class Staff < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
    # Validations
-
+   validates_presence_of :first_name, :last_name
+   
    # Associations
    has_many :jobs
    has_many :projects, through: :jobs
