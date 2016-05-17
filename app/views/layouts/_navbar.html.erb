@@ -30,22 +30,27 @@
 
               <ul class="dropdown-menu bullet pull-right scrollable-menu notification-drop" aria-labelledby="dropdownMenu1">
 
-                <% current_staff.mailbox.notifications.each do |notification| %>
-                <% @project = Project.find(notification.notification_code) %>
-                  <%= link_to project_read_path(notification) do %>
-                  <% if notification.is_read?(current_staff) %>
-                  <li class="dropdown-item">
-                  <% else %>
-                  <li class="dropdown-item unread">
-                  <% end %>
-                    <p><strong>Project: <%= notification.subject %></strong></p>
-                    <%= notification.body %>
-                    <p class="notif-time"> <%= notification.created_at.strftime('%b' +" " +'%d' +", "+ '%Y'  " / "+ '' + " %I:%M " + '%p') %></p>
-                  </li>
+                <% if current_staff.mailbox.notifications.count == 0 %>
+                  <li class="dropdown-item"> <p> You have no notifications at the moment. </p> </li>
+                <% else %>
+                  <% current_staff.mailbox.notifications.each do |notification| %>
+                  <% @project = Project.find(notification.notification_code) %>
+                    <%= link_to project_read_path(notification) do %>
+                    <% if notification.is_read?(current_staff) %>
+                    <li class="dropdown-item">
+                    <% else %>
+                    <li class="dropdown-item unread">
+                    <% end %>
+                      <p><strong>Project: <%= notification.subject %></strong></p>
+                      <%= notification.body %>
+                      <p class="notif-time"> <%= notification.created_at.strftime('%b' +" " +'%d' +", "+ '%Y'  " / "+ '' + " %I:%M " + '%p') %></p>
+                    </li>
+
+                    <% end %>
 
                   <% end %>
-
                 <% end %>
+
               </ul>
           </div>
         </li>
