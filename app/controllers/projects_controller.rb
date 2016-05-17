@@ -23,7 +23,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(notification.notification_code)
     # @project = Project.find(params[:id])
     @staff = current_staff
-    render :show
+    redirect_to project_path(@project)
   end
 
   # GET /projects

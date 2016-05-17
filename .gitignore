@@ -24,6 +24,7 @@
 /test/tmp/
 /test/version_tmp/
 /tmp/
+/public/uploads
 
 ## Specific to RubyMotion:
 .dat*
