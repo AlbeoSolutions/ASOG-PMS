@@ -33,7 +33,8 @@
                 <% if current_staff.mailbox.notifications.count == 0 %>
                   <li class="dropdown-item"> <p> You have no notifications at the moment. </p> </li>
                 <% else %>
-                  <% current_staff.mailbox.notifications.each do |notification| %>
+                  <li class="dropdown-item"> <p><strong><%= link_to "View All Notifications",pages_notifications_path %></strong></p></li>
+                  <% current_staff.mailbox.notifications.first(15).each do |notification| %>
                   <% @project = Project.find(notification.notification_code) %>
                     <%= link_to project_read_path(notification) do %>
                     <% if notification.is_read?(current_staff) %>

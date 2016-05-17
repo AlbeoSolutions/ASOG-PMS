@@ -1,0 +1,22 @@
+<div class="main-wrapper">
+<input type="text" id="notice" name="notice" value="<%= notice %>" hidden>
+	<h1> View All Notifications </h1>
+	<ul>
+	<% current_staff.mailbox.notifications.each do |notification| %>
+                  <% @project = Project.find(notification.notification_code) %>
+                    <%= link_to project_read_path(notification) do %>
+                    <% if notification.is_read?(current_staff) %>
+                    <li >
+                    <% else %>
+                    <li >
+                    <% end %>
+                      <p><strong>Project: <%= notification.subject %></strong></p>
+                      <%= notification.body %>
+                      <p class="notif-time"> <%= notification.created_at.strftime('%b' +" " +'%d' +", "+ '%Y'  " / "+ '' + " %I:%M " + '%p') %></p>
+                    </li>
+
+                    <% end %>
+
+                  <% end %>
+                  </ul>
+</div>

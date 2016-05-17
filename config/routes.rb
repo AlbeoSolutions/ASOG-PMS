@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   get 'pages/error'
 
+  get 'pages/notifications'
+
   #DEVISE ROUTING
   devise_for :staffs, :controllers => { registrations: 'registrations' }
 
