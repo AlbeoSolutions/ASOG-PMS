@@ -44,6 +44,12 @@
           N/A
         <% end %>
       </div>
+      <% if @task.get_is_overdue  %>
+      <div>
+        <p><strong>Overdue for:</strong></p>
+        <%= (Date.today - @task.due_date).to_i %> days
+      </div>
+      <% end %>
     </div>
 
 
@@ -62,7 +68,7 @@
 
 
     <%= link_to 'Back', project_tasks_path(:project_id => params[:project_id]), class: "btn btn-danger" %>
-   
+
 
 
   </div>
