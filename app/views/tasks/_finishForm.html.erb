@@ -18,7 +18,13 @@
   <p class="description-paragraph">
     <%= @task.description %>
   </p>
-
+   <% if @task.get_is_overdue  %>
+    <p>
+      <strong>Days Overdue：</strong>
+      <%= (Date.today - @task.due_date).to_i %> days late.
+    </p>
+    
+    <% end %>
 
     <%= simple_form_for @task, url: @path, method: @method do |f| %>
       <%= f.error_notification %>
