@@ -354,6 +354,7 @@ body {
 /* NOTIFICATION STYLES */
 .notification-drop {
 	width: 350px;
+	padding-top: 0;
 
 	a {
 		text-decoration: none;
@@ -368,4 +369,34 @@ body {
 	.unread {
 		background: #eee;
 	}
+
+	.no-notifs {
+		margin: 0;
+    text-align: center;
+	}
+}
+
+.all-notifs {
+	background: #1565c0;
+	padding: 0px !important;
+
+
+	a {
+		color: #fff !important;
+	}
+	.all-notifs-link {
+		font-weight: lighter;
+	}
+
+	.all-notifs-link:hover {
+		background-color: transparent !important;
+		font-weight: bold !important;
+	}
+
+	p {
+		margin-bottom: 0px;
+		text-align: center;
+	}
+
+
 }

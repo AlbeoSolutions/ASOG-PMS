@@ -18,7 +18,11 @@
             <div class="col-xs-9">
               <h4 class="project-title"><%= link_to project.project_title, project %></h4>
               <% if project.isOngoing %>
-                <h6>Status: <span style="color: #d9534f;">Ongoing</span></h6>
+                <% if project.is_late %>
+                  <h6>Status: <span style="color: #d9534f;">Late *</span></h6>
+                <% else %>
+                  <h6>Status: <span style="color: #d9534f;">Ongoing</span></h6>
+                <% end %>
               <% else %>
                 <h6>Status: <span style="color: green;">Finished</span> </h6>
               <% end %>

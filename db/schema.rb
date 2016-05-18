@@ -160,16 +160,6 @@ ActiveRecord::Schema.define(version: 20160511104315) do
 
   add_index "tasks", ["project_id"], name: "index_tasks_on_project_id", using: :btree
 
-  create_table "updates", force: :cascade do |t|
-    t.string   "content",    limit: 255
-    t.boolean  "read"
-    t.datetime "expiry"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.integer  "project_id", limit: 4
-  end
-
-  add_index "updates", ["project_id"], name: "index_updates_on_project_id", using: :btree
 
   add_foreign_key "mailboxer_conversation_opt_outs", "mailboxer_conversations", column: "conversation_id", name: "mb_opt_outs_on_conversations_id"
   add_foreign_key "mailboxer_notifications", "mailboxer_conversations", column: "conversation_id", name: "notifications_on_conversation_id"

@@ -27,3 +27,12 @@
       $('#notice').val("");
     }
   });
+
+  toastr.options = {
+  "debug": false,
+  "onclick": null,
+  "fadeIn": 300,
+  "fadeOut": 1000,
+  "timeOut": 1000,
+  "extendedTimeOut": 1000
+}

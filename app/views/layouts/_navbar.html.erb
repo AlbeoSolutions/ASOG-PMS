@@ -31,9 +31,9 @@
               <ul class="dropdown-menu bullet pull-right scrollable-menu notification-drop" aria-labelledby="dropdownMenu1">
 
                 <% if current_staff.mailbox.notifications.count == 0 %>
-                  <li class="dropdown-item"> <p> You have no notifications at the moment. </p> </li>
+                  <li class="dropdown-item"> <p class="no-notifs"> You have no notifications at the moment. </p> </li>
                 <% else %>
-                  <li class="dropdown-item"> <p><strong><%= link_to "View All Notifications",pages_notifications_path %></strong></p></li>
+                  <li class="dropdown-item all-notifs"> <p><strong><%= link_to "View All Notifications",pages_notifications_path, class: "all-notifs-link" %></strong></p></li>
                   <% current_staff.mailbox.notifications.first(15).each do |notification| %>
                   <% @project = Project.find(notification.notification_code) %>
                     <%= link_to project_read_path(notification) do %>
@@ -50,6 +50,7 @@
                     <% end %>
 
                   <% end %>
+
                 <% end %>
 
               </ul>

@@ -75,6 +75,12 @@ class Project < ActiveRecord::Base
     end
   end
 
+  def is_late
+    if Date.today > self.end_date
+      return true
+    end
+  end
+
   def get_project_summary
     "#{self.project_summary_filename}"
   end

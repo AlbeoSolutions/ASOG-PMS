@@ -13,3 +13,43 @@ thead {
   background: #1C3F94;
   color: white;
 }
+
+// VIEW ALL NOTIFS STYLING
+.notifs-list {
+  // text-align: center;
+  width: 70%;
+  margin: auto !important;
+
+  .heading-div {
+      h1 {
+        color: #fff;
+        background-color: #1C3F94;
+        padding: 5px;
+        font-weight: lighter;
+      }
+
+  }
+
+  a:hover {
+    text-decoration: none;
+
+    .boxed {
+      box-shadow: 0 4px 6px 0 rgba(0,0,0,0.2),0 6px 15px 0 rgba(0,0,0,0.19);
+
+
+      transition: box-shadow 0.5s;
+    }
+    .notif-time {
+
+
+    }
+  }
+
+
+  .boxed {
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+    margin-bottom: 15px;
+    padding: 10px;
+    background: #fff;
+  }
+}

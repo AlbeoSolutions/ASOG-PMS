@@ -6,6 +6,10 @@ class ProjectsController < ApplicationController
   def progress
     @project = Project.find(params[:project_id])
     @items = @project.items
+
+    records = Record.where(item_id: @project.items.pluck(:id)).group_by { |m| m.created_at.beginning_of_month }
+    @data = Hash.new(0)
+    records.each { |k,v| @data[k.strftime("%B")] = v.count }
   end
 
   # Custom functionality

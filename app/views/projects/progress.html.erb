@@ -118,7 +118,7 @@
         <% if current_staff.admin? %>
           <div class="row dl-row">
             <%= link_to project_progress_path(@project, :format => 'pdf'), class: "PDF-DL" do %>
-              Download as PDF <span class="glyphicon glyphicon-download-alt"></span>
+              Download PDF version <span class="glyphicon glyphicon-download-alt"></span>
             <% end %>
           </div>
         <% end %>
@@ -127,6 +127,55 @@
     </div>
 
   </div><br>
+  <div class="row">
+    <div class="col-md-12">
+      <h4 class="text-center graph-heading per-month">Expenditure per month</h4>
+      <canvas id="myChart2" class="expenditure-per-item" width="400" height="150"></canvas>
+      <script>
+      console.log(<%= raw @data.to_json %>);
+      var my_data = <%= raw @data.to_json %>;
+      console.log(Object.keys(my_data));
+      data = {
+        // labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "Novermber", "December"],
+        labels: Object.keys(my_data),
+        datasets: [
+            {
+                label: "# of Expenditures",
+                fill: false,
+                lineTension: 0.1,
+                backgroundColor: "rgba(33, 150, 243, 1)",
+                borderColor: "rgba(33, 150, 243, 1)",
+                borderCapStyle: 'butt',
+                borderDash: [],
+                borderDashOffset: 0.0,
+                borderJoinStyle: 'miter',
+                pointBorderColor: "rgba(33, 150, 243, 1)",
+                pointBackgroundColor: "#fff",
+                pointBorderWidth: 1,
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: "rgba(33, 150, 243, 1)",
+                pointHoverBorderColor: "rgba(33, 150, 243, 1)",
+                pointHoverBorderWidth: 2,
+                pointRadius: 6,
+                pointHitRadius: 10,
+                // data: [65, 12, 80, 81, <% @item%>, 55, 40],
+                data: Object.keys(my_data).map(function(key){return my_data[key]})
+            }
+        ]
+    };
+      var ctx = document.getElementById("myChart2");
+      new Chart(ctx, {
+        type: 'line',
+        data: data,
+        options: {
+            xAxes: [{
+                display: false
+            }]
+        }
+    });
+      </script>
+    </div>
+  </div>
 
 
 </div>
